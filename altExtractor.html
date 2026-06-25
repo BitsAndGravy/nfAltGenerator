@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alt Extractor</title>
+    <script>
+        function getAlternatives() {
+            document.getElementById('superDiv').innerText = '';     // Clear the div of previous values
+            let text = document.getElementById('textInput').value;  // Get the snippet
+            let parsedByLine = text.split(/\r?\n/);                 // Split snippet by paragraph
+            let firstLine = parsedByLine[0];                        // Save only the first paragraph
+            let parsedByColon = firstLine.split(":");               // Split first paragraph at the colon
+            let afterColon = parsedByColon[1];                      // Only save the second half of the first paragraph
+            let drugList = afterColon.split(",");                   // Split up drug names by commas
+            
+            for(i = 0; i < drugList.length; i++) {                  // Delete the word 'and' from the beginning of each item in the array
+                let andCheck = drugList[i].slice(0, 4);
+                let notAnd = drugList[i].slice(4);
+
+                if(andCheck === ' and') {
+                    drugList[i] = notAnd;
+                }
+                drugList[i] = drugList[i].trim();                   // Remove spaces at beginning/end of each item
+                drugList[i] = drugList[i].charAt(0).toUpperCase() + drugList[i].slice(1); // Capitalize each item
+            };
+
+
+            
+
+            let drugListSorted = drugList.sort();                   // Sort alphabetically
+
+            for(i = 0; i < drugList.length; i++) {                  // For loop to add each drug to the page
+                let check = document.createElement('input');
+                    check.type = 'checkbox';
+                let drugNode = document.createTextNode(drugList[i]);
+                let bk = document.createElement('br');
+                let outputDiv = document.getElementById('superDiv');
+
+                outputDiv.appendChild(check);
+                outputDiv.appendChild(drugNode);  // Add drug name to the div
+                outputDiv.appendChild(bk);        // Add new line after drug name
+            };
+
+        }
+
+        function clearTextarea() {
+            document.getElementById('textInput').value = '';
+            document.getElementById('superDiv').innerText = '';
+            document.getElementById('textInput').focus();
+        }
+    </script>
+    <style>
+        body, textarea {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: aqua;
+        }
+
+        textarea {
+            field-sizing: content; /* height of the textarea will automatically increase based on the number of lines entered. */
+            min-height: 4rem; /* default number of lines to start with */
+        }
+
+        .page-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .content-background {
+            background-color: aquamarine;
+            padding: 40px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="page-wrapper content-background">
+        <div>
+            <H3>Alt Extractor</H3>
+            <p>Returns a list of alternatives from a snippet for non-formulary medications.</p>
+            <p>Requirements: <br>
+                1. All alternatives must be in the first paragraph,  <br>
+                2. Drugs must be in one list (i.e. not two lists like ;NF7), <br>
+                3. The agents must be listed after a colon (:). <br>
+                Otherwise nothing will happen.</p>
+            <textarea
+                id="textInput"
+                placeholder="paste TextExpander snippet here"
+                cols='100';
+                rows='20';
+                ></textarea>
+            <br>
+            <button type="button" onclick="getAlternatives()">Extract!</button>
+            <button type="button" onclick="clearTextarea()">Clear</button>
+        </div>
+        <br>
+        <p>List returns here:</p>
+        <div id="superDiv" style="padding-left: 20px;">
+        </div>
+    </div>
+</body>
+
