@@ -54,12 +54,17 @@
         }
 
         body {
-            background-color: aqua;
+            background-image: linear-gradient(#b46848, #efba5c, #ffedbb);
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            padding-left: 30px;
+            padding-right: 30px;
         }
 
         textarea {
             field-sizing: content; /* height of the textarea will automatically increase based on the number of lines entered. */
-            min-height: 4rem; /* default number of lines to start with */
+            min-height: 6rem; /* default number of lines to start with */
+            min-width: 600px;
         }
 
         .page-wrapper {
@@ -68,7 +73,7 @@
         }
 
         .content-background {
-            background-color: aquamarine;
+            background-image: linear-gradient(#eddbcd, #fcf7f4);
             padding: 40px;
         }
 
@@ -77,28 +82,30 @@
     </style>
 </head>
 <body>
-    <div class="page-wrapper content-background">
-        <div>
-            <H3>Alt Extractor</H3>
-            <p>Returns a list of alternatives from a snippet for non-formulary medications.</p>
-            <p>Requirements: <br>
-                1. All alternatives must be in the first paragraph,  <br>
-                2. Drugs must be in one list (i.e. not two lists like ;NF7), <br>
-                3. The agents must be listed after a colon (:). <br>
-                Otherwise nothing will happen.</p>
-            <textarea
-                id="textInput"
-                placeholder="paste TextExpander snippet here"
-                cols='100';
-                rows='20';
-                ></textarea>
+    <div class="body-background">
+        <div class="page-wrapper content-background">
+            <div>
+                <H3>Alt Extractor</H3>
+                <p>Returns a list of alternatives from a snippet for non-formulary medications.</p>
+                <p>Requirements: <br>
+                    1. All alternatives must be in the first paragraph,  <br>
+                    2. Drugs must be in one list (i.e. not two lists like ;NF7), <br>
+                    3. The agents must be listed after a colon (:). <br>
+                    Otherwise nothing will happen.</p>
+                <textarea
+                    id="textInput"
+                    placeholder="paste TextExpander snippet here"
+                    cols='100';
+                    rows='20';
+                    ></textarea>
+                <br>
+                <button type="button" onclick="getAlternatives()">Extract!</button>
+                <button type="button" onclick="clearTextarea()">Clear</button>
+            </div>
             <br>
-            <button type="button" onclick="getAlternatives()">Extract!</button>
-            <button type="button" onclick="clearTextarea()">Clear</button>
-        </div>
-        <br>
-        <p>List returns here:</p>
-        <div id="superDiv" style="padding-left: 20px;">
+            <p>List returns here:</p>
+            <div id="superDiv" style="padding-left: 20px;">
+            </div>
         </div>
     </div>
 </body>
