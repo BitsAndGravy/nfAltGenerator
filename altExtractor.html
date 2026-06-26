@@ -3,6 +3,7 @@
 <head>
     <title>Alt Extractor</title>
     <script>
+        // Extract button
         function getAlternatives() {
             document.getElementById('superDiv').innerText = '';     // Clear the div of previous values
             let text = document.getElementById('textInput').value;  // Get the snippet
@@ -23,9 +24,6 @@
                 drugList[i] = drugList[i].charAt(0).toUpperCase() + drugList[i].slice(1); // Capitalize each item
             };
 
-
-            
-
             let drugListSorted = drugList.sort();                   // Sort alphabetically
 
             for(i = 0; i < drugList.length; i++) {                  // For loop to add each drug to the page
@@ -35,13 +33,15 @@
                 let bk = document.createElement('br');
                 let outputDiv = document.getElementById('superDiv');
 
-                outputDiv.appendChild(check);
-                outputDiv.appendChild(drugNode);  // Add drug name to the div
-                outputDiv.appendChild(bk);        // Add new line after drug name
+                outputDiv.classList.add('line-spacing'); // Add spacing between lines
+                outputDiv.appendChild(check);       // Add checkbox
+                outputDiv.appendChild(drugNode);    // Add drug name to the div
+                outputDiv.appendChild(bk);          // Add new line after drug name
             };
 
         }
 
+        // Clear button
         function clearTextarea() {
             document.getElementById('textInput').value = '';
             document.getElementById('superDiv').innerText = '';
@@ -54,17 +54,44 @@
         }
 
         body {
-            background-image: linear-gradient(#b46848, #efba5c, #ffedbb);
+            background-image: linear-gradient(#b46848, #efba5c);
             background-repeat: no-repeat;
             min-height: 100vh;
             padding-left: 30px;
             padding-right: 30px;
         }
 
+        p {
+            line-height: 1.4;
+        }
+
+        .line-spacing {
+            line-height: 1.4;
+        }
+
         textarea {
             field-sizing: content; /* height of the textarea will automatically increase based on the number of lines entered. */
             min-height: 6rem; /* default number of lines to start with */
-            min-width: 600px;
+            max-width: 600px;
+            background-color: #ffffffe3;
+            box-shadow: 2px 2px 4px #00000050 inset;
+            border-color: black;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        input[type=checkbox] {
+            accent-color: 5492d7;
+        }
+
+        button {
+            background-image: linear-gradient(#efba5cc6, #d99b55c6);
+            box-shadow: 2px 2px 4px #b46848;
+            padding: 5px;
+            border: 1px solid;
+            border-radius: 5px;
+            width: 75px;
+            margin-right: 5px;
         }
 
         .page-wrapper {
@@ -73,10 +100,22 @@
         }
 
         .content-background {
-            background-image: linear-gradient(#eddbcd, #fcf7f4);
-            padding: 40px;
+            background-color: #faf7f5e4;
+            box-shadow: 6px 6px 18px #00000076;
+            padding-top: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 40px;
+            border-radius: 40px;
         }
 
+        .return-box {
+            background-color: #ffffffe3;
+            box-shadow: 4px 4px 10px #b46848;
+            border-radius: 20px;
+            min-height: 100px;
+            padding: 10px 20px 20px 20px;
+        }
 
 
     </style>
@@ -85,7 +124,7 @@
     <div class="body-background">
         <div class="page-wrapper content-background">
             <div>
-                <H3>Alt Extractor</H3>
+                <H2>Alt Extractor</H2>
                 <p>Returns a list of alternatives from a snippet for non-formulary medications.</p>
                 <p>Requirements: <br>
                     1. All alternatives must be in the first paragraph,  <br>
@@ -99,12 +138,16 @@
                     rows='20';
                     ></textarea>
                 <br>
-                <button type="button" onclick="getAlternatives()">Extract!</button>
+                <br>
+                <button type="button" onclick="getAlternatives()">Extract</button>
                 <button type="button" onclick="clearTextarea()">Clear</button>
             </div>
             <br>
-            <p>List returns here:</p>
-            <div id="superDiv" style="padding-left: 20px;">
+
+            <div class="return-box">
+                <p>List returns here:</p>
+                <div id="superDiv" class="return-div" style="padding-left: 20px;">
+                </div>
             </div>
         </div>
     </div>
