@@ -5,31 +5,73 @@
     <script>
         // Extract button
         function getAlternatives() {
-            document.getElementById('superDiv').innerText = '';     // Clear the div of previous values
-            let text = document.getElementById('textInput').value;  // Get the snippet
-            let parsedByLine = text.split(/\r?\n/);                 // Split snippet by paragraph
-            let firstLine = parsedByLine[0];                        // Save only the first paragraph
-            let parsedByColon = firstLine.split(":");               // Split first paragraph at the colon
-            let afterColon = parsedByColon[1];                      // Only save the second half of the first paragraph
-            let drugList = afterColon.split(",");                   // Split up drug names by commas
-            
-            for(i = 0; i < drugList.length; i++) {                  // Delete the word 'and' from the beginning of each item in the array
-                let andCheck = drugList[i].slice(0, 4);
-                let notAnd = drugList[i].slice(4);
+            // Clear the div of previous values
+            document.getElementById('superDiv').innerText = '';     
 
-                if(andCheck === ' and') {
-                    drugList[i] = notAnd;
+            // Get the snippet
+            let text = document.getElementById('textInput').value; 
+            
+            // Split snippet by paragraph
+            let parsedByLine = text.split(/\r?\n/);   
+            
+            // Save only the first paragraph
+            let firstLine = parsedByLine[0];      
+            
+            // Split first paragraph at the colon
+            let parsedByColon = firstLine.split(":");
+            
+            // From the first paragraph, save everything after the first colon
+            let afterColon = parsedByColon.slice(1);
+            
+            // If there were multiple colons (i.e. multiple arrays), create one string.
+            let afterColonJoined = afterColon.join(' , ');
+            
+            // Split up drug names by commas
+            let drugList = afterColonJoined.split(",");  
+            
+            // Defined for future use
+            let allDrugs = [];
+            
+            // How to handle 'and'
+            for(i = 0; i < drugList.length; i++) {
+                // If the word and is present, split up the element (also removes 'and'). Creates an array.             
+                let newDrugsList = drugList[i].split(" and ");
+                
+                // Create a new drug list of items (no array within an array problem)
+                for(k = 0; k < newDrugsList.length; k++) {
+                    allDrugs.unshift(newDrugsList[k]);
+                };
+            }
+
+            // Final polish on each item
+            for(i=0; i < allDrugs.length; i++) {
+                
+                // Remove spaces at beginning/end of each item
+                allDrugs[i] = allDrugs[i].trim();
+                
+                // Handling blank entries
+                if(allDrugs[i] === '') {
+
+                    // Remove item from array
+                    allDrugs.splice(i, 1);
+
+                    //Reset i, otherwise would skip an item
+                    i--;
                 }
-                drugList[i] = drugList[i].trim();                   // Remove spaces at beginning/end of each item
-                drugList[i] = drugList[i].charAt(0).toUpperCase() + drugList[i].slice(1); // Capitalize each item
+                
+                // Capitalize each item
+                allDrugs[i] = allDrugs[i].charAt(0).toUpperCase() + allDrugs[i].slice(1); 
+
             };
 
-            let drugListSorted = drugList.sort();                   // Sort alphabetically
+            // Sort alphabetically
+            let drugListSorted = allDrugs.sort();                   
 
-            for(i = 0; i < drugList.length; i++) {                  // For loop to add each drug to the page
+             // For loop to add each drug to the page
+            for(i = 0; i < allDrugs.length; i++) {                 
                 let check = document.createElement('input');
                     check.type = 'checkbox';
-                let drugNode = document.createTextNode(drugList[i]);
+                let drugNode = document.createTextNode(allDrugs[i]);
                 let bk = document.createElement('br');
                 let outputDiv = document.getElementById('superDiv');
 
@@ -74,24 +116,32 @@
             min-height: 6rem; /* default number of lines to start with */
             max-width: 600px;
             background-color: #ffffffe3;
-            box-shadow: 2px 2px 4px #00000050 inset;
+            box-shadow: 2px 2px 4px #17223058 inset;
             border-color: black;
             padding: 5px;
             border-radius: 5px;
         }
 
         input[type=checkbox] {
-            accent-color: 5492d7;
+            accent-color: #0077ff;
         }
 
         button {
             background-image: linear-gradient(#efba5cc6, #d99b55c6);
-            box-shadow: 2px 2px 4px #b46848;
+            box-shadow: 2px 2px 4px #17223098;
             padding: 5px;
             border: 1px solid;
             border-radius: 5px;
             width: 75px;
             margin-right: 5px;
+        }
+
+        button:hover {
+            background-color: red;
+        }
+
+        button:active {
+            background-color: green;
         }
 
         .page-wrapper {
@@ -101,7 +151,7 @@
 
         .content-background {
             background-color: #faf7f5e4;
-            box-shadow: 6px 6px 18px #00000076;
+            box-shadow: 6px 6px 18px #17223098;
             padding-top: 10px;
             padding-left: 40px;
             padding-right: 40px;
@@ -111,10 +161,10 @@
 
         .return-box {
             background-color: #ffffffe3;
-            box-shadow: 4px 4px 10px #b46848;
+            box-shadow: 4px 4px 10px #17223098;
             border-radius: 20px;
             min-height: 100px;
-            padding: 10px 20px 20px 20px;
+            padding: 3px 20px 20px 20px;
         }
 
 
@@ -148,6 +198,7 @@
                 <p>List returns here:</p>
                 <div id="superDiv" class="return-div" style="padding-left: 20px;">
                 </div>
+                <span id="testHere">test</span>
             </div>
         </div>
     </div>
