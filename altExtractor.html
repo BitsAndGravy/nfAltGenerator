@@ -25,6 +25,11 @@
             
             // Split first paragraph at the colon
             let parsedByColon = firstLine.split(":");
+
+            // Error if there is no colon
+            if(parsedByColon.length === 1) {
+                document.getElementById('superDiv').innerText = "Error: Entry is blank or there is no colon in the first paragraph; please edit entry.";
+            }
             
             // From the first paragraph, save everything after the first colon
             let afterColon = parsedByColon.slice(1);
@@ -37,21 +42,22 @@
             
             // Defined for future use
             let allDrugs = [];
+            let allDrugsNoNumbers = [];
             
             // How to handle 'and'
             for(i = 0; i < drugList.length; i++) {
                 // If the word and is present, split up the element (also removes 'and'). Creates an array.             
                 let newDrugsList = drugList[i].split(" and ");
                 
-                // Create a new drug list of items (no array within an array problem)
+                // Create a new drug list of items (no array within an array problem). Works if there are one or two elements in newDrugsList.
                 for(k = 0; k < newDrugsList.length; k++) {
-                    allDrugs.unshift(newDrugsList[k]);
+                    allDrugs.push(newDrugsList[k]);
                 };
             }
 
-            // Final polish on each item
+            // Polish on items and the array
             for(i=0; i < allDrugs.length; i++) {
-                
+
                 // Remove spaces at beginning/end of each item
                 allDrugs[i] = allDrugs[i].trim();
                 
@@ -68,10 +74,43 @@
                 // Capitalize each item
                 allDrugs[i] = allDrugs[i].charAt(0).toUpperCase() + allDrugs[i].slice(1); 
 
+                // Remove period at end of item
+                if(allDrugs[i].endsWith('.')) {
+                    allDrugs[i] = allDrugs[i].slice(0, -1);
+                }
+
             };
 
+            // Check for items that are numbers only, add them to previous item in array.
+            for(i = 0; i < allDrugs.length; i++) {
+
+                // regex expression is / ... /, ^ first element, \d is digit (0-9)
+                if(/^\d/.test(allDrugs[i])) {
+                    let previousElement = i-1
+
+                    // Combine elements. 
+                        // Example, if i is index 5 (10 mg), previousElement would be index 4 (glipizide 2.5 mg). 
+                        // splice will add a new element at index 4 (glipizide 2.5 mg, 10 mg), pushing contents of previousElement (glipizide 2.5 mg) to index 5, and i (10 mg) to 6.
+                        // splice will then delete the 2 elements after index 4 (glipizide 2.5 mg, and 10 mg), with combined product remaining.
+                    allDrugs.splice(
+
+                        // Add new element before the previous entry 
+                        previousElement, 
+
+                        // Delete the previous entry and the current entry
+                        2, 
+
+                        // Create new element that combines previous entry and current entry
+                        allDrugs[previousElement] + ", " + allDrugs[i]);
+
+                    // Reset i, otherwise will skip an item
+                    i--;
+                }
+            }
+            
             // Sort alphabetically
-            let drugListSorted = allDrugs.sort();                   
+            let drugListSorted = allDrugs.sort();     
+        
 
              // For loop to add each drug to the page
             for(i = 0; i < allDrugs.length; i++) {                 
@@ -109,12 +148,20 @@
             padding-right: 30px;
         }
 
+        h4 {
+            margin-bottom: 0px;
+        }
+
         p {
             line-height: 1.4;
         }
 
         .line-spacing {
             line-height: 1.4;
+        }
+
+        ol li {
+            margin-bottom: 2px;
         }
 
         textarea {
@@ -147,7 +194,7 @@
         }
 
         button:active {
-            background-color: green;
+            background-color: yellow;
         }
 
         .page-wrapper {
@@ -165,6 +212,21 @@
             border-radius: 40px;
         }
 
+        .flex-box {
+            display: flex;
+            padding-left: 20px;
+            align-items: center;
+        }
+
+        .heading-box {
+            background-color: #efba5c;
+            box-shadow: 4px 4px 10px #17223098;
+            border-radius: 20px;
+            min-height: 100px;
+            padding: 3px 20px 10px 20px;
+            margin-top: 20px;
+        }
+
         .return-box {
             background-color: #ffffffe3;
             box-shadow: 4px 4px 10px #17223098;
@@ -180,23 +242,40 @@
     <div class="body-background">
         <div class="page-wrapper content-background">
             <div>
-                <H2>Alt Extractor</H2>
-                <p>Returns a list of alternatives from a snippet for non-formulary medications.</p>
-                <p>Requirements: <br>
-                    1. All alternatives must be in the first paragraph,  <br>
-                    2. Drugs must be in one list (i.e. not two lists like ;NF7), <br>
-                    3. The agents must be listed after a colon (:). <br>
-                    Otherwise nothing will happen.</p>
-                <textarea
-                    id="textInput"
-                    placeholder="paste TextExpander snippet here"
-                    cols='100';
-                    rows='20';
-                    ></textarea>
-                <br>
-                <br>
-                <button type="button" onclick="getAlternatives()">Extract</button>
-                <button type="button" onclick="clearTextarea()">Clear</button>
+                <div id="heading" class="heading-box">
+                    <H2>Alt Extractor</H2>
+                    <p>Returns a list of alternatives from a snippet for non-formulary medications.</p>
+                </div>
+
+                <div id="inputAndRequirements" >
+
+
+                    <div>
+                        <H4>Requirements:</H4>
+                        <ol>
+                            <li>All alternatives must be in the first paragraph.</li>
+                            <li>Alternatives must be listed after at least one colon. </li>
+                        </ol>
+                        
+                    </div>
+
+                    <div>
+                        <textarea
+                            id="textInput"
+                            placeholder="paste TextExpander snippet here, then click Extract"
+                            cols='100';
+                            rows='20';
+                            ></textarea>
+                        <br>
+                        <br>
+                        <button type="button" onclick="getAlternatives()">Extract</button>
+                        <button type="button" onclick="clearTextarea()">Clear</button>
+                    </div>
+                    
+                    
+
+                    
+                </div>
             </div>
             <br>
 
