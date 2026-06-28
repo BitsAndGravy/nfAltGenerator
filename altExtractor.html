@@ -113,22 +113,34 @@
         
 
              // For loop to add each drug to the page
-            for(i = 0; i < allDrugs.length; i++) {                 
+            for(i = 0; i < allDrugs.length; i++) {     
+                // Create checkbox    
                 let check = document.createElement('input');
-                    check.type = 'checkbox';
-                let drugNode = document.createTextNode(allDrugs[i]);
-                let bk = document.createElement('br');
-                let outputDiv = document.getElementById('superDiv');
+                check.type = 'checkbox';
 
-                outputDiv.classList.add('line-spacing'); // Add spacing between lines
-                outputDiv.appendChild(check);       // Add checkbox
-                outputDiv.appendChild(drugNode);    // Add drug name to the div
-                outputDiv.appendChild(bk);          // Add new line after drug name
+                // Text for checkbox (i.e. drug name)
+                let drugNode = document.createTextNode(allDrugs[i]);
+                
+                // Add checkbox and text to the label
+                let newLabel = document.createElement('label');              
+                    newLabel.appendChild(check);
+                    newLabel.appendChild(drugNode);
+                    
+                let outputDiv = document.getElementById('superDiv');
+                // Add spacing between lines    
+                    outputDiv.classList.add('line-spacing');   
+                    
+                // Add drug name to the div
+                    outputDiv.appendChild(newLabel);
+
+                // Add new line (break) after drug name
+                    let bk = document.createElement('br');
+                    outputDiv.appendChild(bk);          
             };
 
         }
 
-        // Clear button
+        // Clear button: Clears textarea input and the output, brings focus to the textarea.
         function clearTextarea() {
             document.getElementById('textInput').value = '';
             document.getElementById('superDiv').innerText = '';
