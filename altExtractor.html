@@ -26,9 +26,16 @@
             // Split first paragraph at the colon
             let parsedByColon = firstLine.split(":");
 
-            // Error if there is no colon
+            // Adjust delimiter if no colon
             if(parsedByColon.length === 1) {
-                document.getElementById('superDiv').innerText = "Error: Entry is blank or there is no colon in the first paragraph; please edit entry.";
+                //document.getElementById('superDiv').innerText = "Error: Entry is blank or there is no colon in the first paragraph; please edit entry.";
+                parsedByColon = firstLine.split('such as, but not limited to,');
+            }
+
+            // Adjust delimiter again if no colon
+            if(parsedByColon.length === 1) {
+                //document.getElementById('superDiv').innerText = "Error: Entry is blank or there is no colon in the first paragraph; please edit entry.";
+                parsedByColon = firstLine.split('such as');
             }
             
             // From the first paragraph, save everything after the first colon
@@ -160,12 +167,16 @@
             padding-right: 30px;
         }
 
-        h4 {
-            margin-bottom: 0px;
+        p {
+            margin: 0px;
         }
 
-        p {
-            line-height: 1.4;
+        h2 {
+            margin-top: 0px;
+        }
+
+        h4 {
+            margin-bottom: 0px;
         }
 
         .line-spacing {
@@ -179,12 +190,14 @@
         textarea {
             field-sizing: content; /* height of the textarea will automatically increase based on the number of lines entered. */
             min-height: 6rem; /* default number of lines to start with */
-            max-width: 600px;
+            width: 95%;
+            max-width: 95%;
             background-color: #ffffffe3;
             box-shadow: 2px 2px 4px #17223058 inset;
             border-color: black;
             padding: 5px;
             border-radius: 5px;
+            
         }
 
         input[type=checkbox] {
@@ -198,7 +211,7 @@
             border: 1px solid;
             border-radius: 5px;
             width: 75px;
-            margin-right: 5px;
+            margin-right: 20px;
             transition: all 0.1s ease-out;
         }
 
@@ -214,6 +227,8 @@
             transform: translateY(4px);
         }
 
+        
+
         .page-wrapper {
             max-width: 1000px;
             margin: 0 auto;
@@ -222,26 +237,54 @@
         .content-background {
             background-color: #faf7f5e4;
             box-shadow: 6px 6px 18px #17223098;
-            padding-top: 10px;
-            padding-left: 40px;
-            padding-right: 40px;
-            padding-bottom: 40px;
+            padding: 30px;
             border-radius: 40px;
+        }
+
+        .box-padding {
+            padding: 20px;
+        }
+
+        .heading-box {
+            background-image: linear-gradient(#d99b55e5, #efba5ce5);
+            box-shadow: 0px 2px 4px #17223098;
+            border-radius: 20px;
         }
 
         .flex-box {
             display: flex;
-            padding-left: 20px;
-            align-items: center;
-        }
-
-        .heading-box {
-            background-image: linear-gradient(#d99b55c6, #efba5c);
+            background-image: linear-gradient(#ffffffe3);
             box-shadow: 0px 2px 4px #17223098;
             border-radius: 20px;
-            min-height: 100px;
-            padding: 3px 20px 10px 20px;
+
+            /* Spacing between the three boxes */
             margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .flex-box-contents {
+            margin: 00px;
+
+        }
+
+        .flex-box-a {
+            width: 60%;
+        }
+
+        .flex-box-b {
+            width: 30%;
+
+        }
+
+        .error {
+            background-color: red;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
         }
 
         .return-box {
@@ -249,7 +292,6 @@
             box-shadow: 0px 2px 4px #17223098;
             border-radius: 20px;
             min-height: 100px;
-            padding: 3px 20px 20px 20px;
         }
 
 
@@ -259,15 +301,29 @@
     <div class="body-background">
         <div class="page-wrapper content-background">
             <div>
-                <div id="heading" class="heading-box">
+                <div id="heading" class="heading-box box-padding">
                     <H2>Alt Extractor</H2>
                     <p>Returns a list of alternatives from a snippet for non-formulary medications.</p>
                 </div>
 
-                <div id="inputAndRequirements" >
+                <div id="inputAndRequirements" class="flex-box box-padding">
 
+                    <div id="inputs" class="flex-box-contents flex-box-a">
+                        <textarea
+                            id="textInput"
+                            placeholder="paste TextExpander snippet here, then click Extract"
+                            cols='100';
+                            rows='20';
+                            ></textarea>
 
-                    <div>
+                        <div id="buttons" class="buttons">
+                            <button type="button" onclick="getAlternatives()">Extract</button>
+                            <button type="button" onclick="clearTextarea()">Clear</button>
+                        </div>
+
+                    </div>
+
+                    <div id="requirements" class="flex-box-contents flex-box-b">
                         <H4>Requirements:</H4>
                         <ol>
                             <li>All alternatives must be in the first paragraph.</li>
@@ -275,28 +331,11 @@
                         </ol>
                         
                     </div>
-
-                    <div>
-                        <textarea
-                            id="textInput"
-                            placeholder="paste TextExpander snippet here, then click Extract"
-                            cols='100';
-                            rows='20';
-                            ></textarea>
-                        <br>
-                        <br>
-                        <button type="button" onclick="getAlternatives()">Extract</button>
-                        <button type="button" onclick="clearTextarea()">Clear</button>
-                    </div>
-                    
-                    
-
                     
                 </div>
             </div>
-            <br>
 
-            <div class="return-box">
+            <div class="return-box box-padding">
                 <p>List returns here:</p>
                 <div id="superDiv" class="return-div" style="padding-left: 20px;">
                 </div>
