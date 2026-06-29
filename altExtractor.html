@@ -34,8 +34,14 @@
 
             // Adjust delimiter again if no colon
             if(parsedByColon.length === 1) {
-                //document.getElementById('superDiv').innerText = "Error: Entry is blank or there is no colon in the first paragraph; please edit entry.";
                 parsedByColon = firstLine.split('such as');
+            }
+
+            // Error if blank or no appropriate delimiter
+            if(parsedByColon == '') {
+                document.getElementById('superDiv').innerText = "Invalid entry. No text to evaluate. ";
+            } else if(parsedByColon.length === 1) {
+                document.getElementById('superDiv').innerText = "Invalid entry. Please add a delimiter (i.e. a colon) before the first drug name.";
             }
             
             // From the first paragraph, save everything after the first colon
@@ -176,7 +182,7 @@
         }
 
         h4 {
-            margin-bottom: 0px;
+            margin: 0px;
         }
 
         .line-spacing {
@@ -303,7 +309,7 @@
             <div>
                 <div id="heading" class="heading-box box-padding">
                     <H2>Alt Extractor</H2>
-                    <p>Returns a list of alternatives from a snippet for non-formulary medications.</p>
+                    <p>Returns a list of drug names from a denial language snippet.</p>
                 </div>
 
                 <div id="inputAndRequirements" class="flex-box box-padding">
@@ -324,19 +330,25 @@
                     </div>
 
                     <div id="requirements" class="flex-box-contents flex-box-b">
-                        <H4>Requirements:</H4>
+                        <H4>All alternatives must be:</H4>
                         <ol>
-                            <li>All alternatives must be in the first paragraph.</li>
-                            <li>Alternatives must be listed after at least one colon. </li>
+                            <li>In the first paragraph.</li>
+                            <li>Listed after at least one colon. </li>
                         </ol>
-                        
+
+                        <H4>Limitations:</H4>
+                        <ol>
+                            <li>Drugs may be at the end of text </li>
+                            <li>Creates a single list; results are inaccurate if DL contains complex/multiple lists (e.g. A or B AND C or D). Be familiar with the DL you are using. </li>
+                        </ol>
                     </div>
                     
                 </div>
             </div>
 
             <div class="return-box box-padding">
-                <p>List returns here:</p>
+                <h4>Result:</h4>
+                <br>
                 <div id="superDiv" class="return-div" style="padding-left: 20px;">
                 </div>
             </div>
