@@ -4,11 +4,7 @@
 <head>
     <title>Alt Extractor</title>
     <link rel="shortcut icon" type="x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="colorThemes.css">
     <script>
-        window.onload = function() {
-            document.getElementById('themeSelect').value = localStorage.getItem('theme');
-        }
 
         // Extract button
         function getAlternatives() {
@@ -29,6 +25,7 @@
 
             // Adjust delimiter if no colon
             if(parsedByColon.length === 1) {
+                //document.getElementById('superDiv').innerText = "Error: Entry is blank or there is no colon in the first paragraph; please edit entry.";
                 parsedByColon = firstLine.split('such as, but not limited to,');
             }
 
@@ -42,8 +39,6 @@
                 document.getElementById('superDiv').innerText = "Invalid entry. No text to evaluate. ";
             } else if(parsedByColon.length === 1) {
                 document.getElementById('superDiv').innerText = "Invalid entry. Please add a delimiter (i.e. a colon) before the first drug name.";
-            } else if(parsedByColon[1] == '') {
-                document.getElementById('superDiv').innerText = "Invalid entry.";
             }
             
             // From the first paragraph, save everything after the first colon
@@ -159,26 +154,41 @@
             document.getElementById('textInput').focus();
         }
 
-    /* ||| Theme changer */
-        function changeTheme(theme) { 
-            let htmlTag = document.getElementsByTagName("html")[0];
-            
-            if (htmlTag.hasAttribute("data-theme")) { // Check for non-default theme
-                htmlTag.removeAttribute("data-theme"); // Remove theme
-            }
-            htmlTag.setAttribute("data-theme", theme); // Add new theme
-            localStorage.setItem('theme', theme); // Save theme
-            }
-
-        const savedTheme = localStorage.getItem('theme');
-        document.getElementsByTagName("html")[0].setAttribute("data-theme", savedTheme); // Add previously saved theme
-
     </script>
 
 
     <style>
 
-        
+        :root, [data-theme='orange-light'] {
+            /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
+            --main-background-gradient: #b46848, #efba5c;
+            --main-shadow-color: #17223098;
+
+            /* Big blob that contains the other blobs */
+            --body-background-color: #faf7f5e4;
+
+            --heading-background-gradient: #d99b55e5, #efba5ce5;
+            --heading-text-color: black;
+
+            /* Applies to textarea/input blob and results blob */
+            --content-background-color: #ffffffe3;
+            --content-text-color: black;
+
+            --input-border-color: black;
+
+            --textarea-background-color: #ffffffe3;
+            --textarea-shadow-color: #17223058;
+            --textarea-text-color: black;
+            --placeholder-text-color: #757575;
+
+            --textarea-background-color-focus: #faf7f5e4;
+            --textarea-border-color-focus: #0077ff;
+
+            --button-background-gradient: #efba5cc6, #d99b55c6;
+            --button-text: black;
+
+            --checkbox-checked-color: #0077ff;
+        }
 
         body, textarea {
             font-family: Arial, Helvetica, sans-serif;
@@ -331,12 +341,6 @@
             border-radius: 20px;
             min-height: 100px;
         }
-
-        .footer {
-            position: fixed;
-            bottom: 15px;
-            right: 15px;
-        }
     </style>
 </head>
 
@@ -394,23 +398,6 @@
         </div>
 
         <br>
-
-        <div id="themeSelectDiv" class="footer">
-            <select
-                id="themeSelect"
-                onchange="changeTheme(this.value)"
-                style="float: right;">
-                <optgroup label="Light themes">
-                    <option value="blue-light">Blue</option>
-                    <option value="orange-light">Orange</option>
-                </optgroup>
-
-                <optgroup label="Dark themes">
-                    <!--<option value="black-dark">Black</option>-->
-                    <option value="purple-dark">Purple</option>
-                </optgroup>
-            </select>
-        </div>
 
     </div>
 </body>
