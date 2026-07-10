@@ -212,54 +212,16 @@
 
     --input-border-color: #364c50;
 
-    --textarea-background-color: #364c5023;
+    --textarea-background-color: #fbf5f3;
     --textarea-shadow-color: var(--main-shadow-color);
     --textarea-text-color: black;
     --placeholder-text-color: #00000080;
 
-    --textarea-background-color-focus: #364c501b;
+    --textarea-background-color-focus: white;
     --textarea-border-color-focus: #b59484;
 
     --button-background-gradient: #e0b9a2, #edd1c4;
     --button-text: black;
 
     --checkbox-checked-color: #80c3e2;
-}
-
-[data-theme='grandmother-silk'] {
-    /* Based off of final battle in Path of Pain */
-    /* Main features */
-    --main-background: #364c50;
-    --header-background: #b59484;
-    --footer-background: #b59484;
-    --body-primary-color: #f1fdfd;
-    --body-secondary-color: #edd1c4;
-    --body-border-color: #e0b9a2;
-    --body-gradient: white;
-
-    /* Text */
-    --heading-text: white;
-    --animated-text: white;
-    --body-text: black;
-    --body-secondary-text: black;
-    --input-text: black;
-    --input-text-focus: var(--input-text);
-    --placeholder-text: #00000080;
-    --hyperlink-static: var(--button-background);
-    --hyperlink-hover: var(--button-hover);
-    --hyperlink-active: var(--button-active);
-    --hyperling-visited: var(--hyperlink-static);
-    
-    /* Buttons */
-    --button-background: #0f1b1f;
-    --button-hover: #182c32;
-    --button-active: #335965;
-    --button-text: white;
-
-    /* Input */
-    --input-background: #ffffffca;
-    --input-background-focus: white;
-    --input-accent-color: #80c3e2;
-    --input-border: #9f8173;
-    --input-border-focus: #9f8173;
 }
