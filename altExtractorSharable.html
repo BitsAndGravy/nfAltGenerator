@@ -39,6 +39,8 @@
                 document.getElementById('superDiv').innerText = "Invalid entry. No text to evaluate. ";
             } else if(parsedByColon.length === 1) {
                 document.getElementById('superDiv').innerText = "Invalid entry. Please add a delimiter (i.e. a colon) before the first drug name.";
+            } else if(parsedByColon[1] == '') {
+                document.getElementById('superDiv').innerText = "Invalid entry.";
             }
             
             // From the first paragraph, save everything after the first colon

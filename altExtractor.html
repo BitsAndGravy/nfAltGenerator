@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="colorThemes.css">
     <script>
         window.onload = function() {
-            document.getElementById('themeSelect').value = localStorage.getItem('theme');
+            document.getElementById('themeSelect').value = localStorage.getItem('altExtractorTheme');
         }
 
         // Extract button
@@ -167,10 +167,10 @@
                 htmlTag.removeAttribute("data-theme"); // Remove theme
             }
             htmlTag.setAttribute("data-theme", theme); // Add new theme
-            localStorage.setItem('theme', theme); // Save theme
+            localStorage.setItem('altExtractorTheme', theme); // Save theme
             }
 
-        const savedTheme = localStorage.getItem('theme');
+        const savedTheme = localStorage.getItem('altExtractorTheme');
         document.getElementsByTagName("html")[0].setAttribute("data-theme", savedTheme); // Add previously saved theme
 
     </script>
@@ -279,10 +279,11 @@
         }
 
         .content-background {
-            background-image: linear-gradient(var(--body-background-color));
+            background-image: linear-gradient(var(--body-background-gradient));
             box-shadow: 6px 6px 18px var(--main-shadow-color);
             padding: 30px;
             border-radius: 40px;
+            border: 2px solid var(--body-border-color);
         }
 
         .box-padding {
@@ -293,6 +294,8 @@
             background-image: linear-gradient(var(--heading-background-gradient));
             box-shadow: 0px 2px 4px var(--main-shadow-color);
             border-radius: 20px;
+            border: 1px solid var(--content-border-color);
+
         }
 
         .flex-box {
@@ -300,6 +303,7 @@
             background-image: linear-gradient(var(--content-background-color));
             box-shadow: 0px 2px 4px var(--main-shadow-color);
             border-radius: 20px;
+            border: 1px solid var(--content-border-color);
 
             /* Spacing between the three boxes */
             margin-top: 20px;
@@ -329,6 +333,7 @@
             background-color: var(--content-background-color);
             box-shadow: 0px 2px 4px var(--main-shadow-color);
             border-radius: 20px;
+            border: 1px solid var(--content-border-color);
             min-height: 100px;
         }
 
@@ -400,15 +405,13 @@
                 id="themeSelect"
                 onchange="changeTheme(this.value)"
                 style="float: right;">
-                <optgroup label="Light themes">
-                    <option value="blue-light">Blue</option>
-                    <option value="orange-light">Orange</option>
-                </optgroup>
+                    <option value="black-dark">Black (dark)</option>
+                    <option value="blue-light">Blue (light)</option>
+                    <option value="green-dark">Green (dark)</option>
+                    <option value="indigo-dark">Indigo (dark)</option>
+                    <option value="orange-light">Orange (light)</option>
+                    <option value="purple-dark">Purple (dark)</option>
 
-                <optgroup label="Dark themes">
-                    <!--<option value="black-dark">Black</option>-->
-                    <option value="purple-dark">Purple</option>
-                </optgroup>
             </select>
         </div>
 

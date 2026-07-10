@@ -4,7 +4,8 @@
     --main-shadow-color: #17223098;
 
     /* Big blob that contains the other blobs */
-    --body-background-color: #faf7f5e4;
+    --body-background-gradient: #faf7f5e4;
+    --body-border-color: transparent;
 
     --heading-background-gradient: #d99b55e5, #efba5ce5;
     --heading-text-color: black;
@@ -12,7 +13,7 @@
     /* Applies to textarea/input blob and results blob */
     --content-background-color: #ffffffe3;
     --content-text-color: black;
-
+    --content-border-color: transparent;
     --input-border-color: black;
 
     --textarea-background-color: #ffffffe3;
@@ -29,13 +30,46 @@
     --checkbox-checked-color: #0077ff;
 }
 
+[data-theme='black-dark'] {
+    /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
+    --main-background-gradient: #232323;
+    --main-shadow-color: black;
+
+    /* Big blob that contains the other blobs */
+    --body-background-gradient: black;
+    --body-border-color: #dc9e29;
+
+    --heading-background-gradient: black;
+    --heading-text-color: #cbc7c0;
+
+    /* Applies to textarea/input blob and results blob */
+    --content-background-color: black;
+    --content-text-color: #cbc7c0;
+    --content-border-color: #5d5d5d;
+
+    --input-border-color: #5d5d5d;
+
+    --textarea-background-color: black;
+    --textarea-shadow-color: #14180b;
+    --textarea-text-color: #cbc7c0;
+    --placeholder-text-color: #cbc7c0A6;
+
+    --textarea-background-color-focus: black;
+    --textarea-border-color-focus: #dc9e29;
+
+    --button-background-gradient: black;
+    --button-text: #cbc7c0;
+
+    --checkbox-checked-color: #dc9e29;
+}
+
 [data-theme='blue-light'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
     --main-background-gradient: #0077ff, #00c3ff;
     --main-shadow-color: #302a1f83;
 
     /* Big blob that contains the other blobs */
-    --body-background-color: #faf7f5e4;
+    --body-background-gradient: #faf7f5e4;
 
     --heading-background-gradient: #0093ffe5, #00c3ffe5;
     --heading-text-color: black;
@@ -52,15 +86,79 @@
     --placeholder-text-color: #757575;
 
     --textarea-background-color-focus: #faf7f5e4;
-    --textarea-border-color-focus: #efba5c;
+    --textarea-border-color-focus: #ffa200;
 
     --button-background-gradient: #00c3ffc6, #0093ffc6;
     --button-text: black;
 
-    --checkbox-checked-color: #efba5c;
+    --checkbox-checked-color: #ffa200;
 }
 
-/* || Dark themes */
+[data-theme='green-dark'] {
+    /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
+    --main-background-gradient: #132641;
+    --main-shadow-color: rgba(0, 0, 0, 0.753);
+
+    /* Big blob that contains the other blobs */
+    --body-background-gradient: #2f7c5b, #235c52, #123542;
+    --body-border-color: #398d57;
+
+    --heading-background-gradient: #212242, #352c4e;
+    --heading-text-color: #e7f0cc;
+
+    /* Applies to textarea/input blob and results blob */
+    --content-background-color: #0f203180;
+    --content-text-color: #e7f0cc;
+    --content-border-color: black;
+
+    --input-border-color: #398d57;
+
+    --textarea-background-color: #21224289;
+    --textarea-shadow-color: #14180b;
+    --textarea-text-color: #cbc7c0;
+    --placeholder-text-color: #e7f0ccb5;
+
+    --textarea-background-color-focus: #212242c0;
+    --textarea-border-color-focus: #398d57;
+
+    --button-background-gradient: #123542, #235c52;
+    --button-text: #cbc7c0;
+
+    --checkbox-checked-color: #4190ff;
+}
+
+[data-theme='indigo-dark'] {
+    /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
+    --main-background-gradient: #212048, #34325a, #34325a, #a47889;;
+    --main-shadow-color: black;
+
+    /* Big blob that contains the other blobs */
+    --body-background-gradient: #11112c;
+    --body-border-color: #be9582;
+
+    --heading-background-gradient: #29435c;
+    --heading-text-color: #f9e1a1;
+
+    /* Applies to textarea/input blob and results blob */
+    --content-background-color: #b483b52f;
+    --content-text-color: #f1cd9c;
+    --content-border-color: #f8ffd276;
+
+    --input-border-color: #f8ffd276;
+
+    --textarea-background-color: #192244ad;
+    --textarea-shadow-color: #14180b;
+    --textarea-text-color: #cbc7c0;
+    --placeholder-text-color: #cbc7c0A6;
+
+    --textarea-background-color-focus: #131a33e0;
+    --textarea-border-color-focus: #cd94da;
+
+    --button-background-gradient: #f9e1a1;
+    --button-text: #212048;
+
+    --checkbox-checked-color: #cd94da;
+}
 
 [data-theme='purple-dark'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
@@ -68,7 +166,8 @@
     --main-shadow-color: #14180b;
 
     /* Big blob that contains the other blobs */
-    --body-background-color: #4e4dad, #954ac9, #d399fa;
+    --body-background-gradient: #4e4dad, #954ac9, #d399fa;
+    --body-border-color: transparent;
 
     --heading-background-gradient: #22134c;
     --heading-text-color: azure;
@@ -76,6 +175,7 @@
     /* Applies to textarea/input blob and results blob */
     --content-background-color: #262a77;
     --content-text-color: azure;
+    --content-border-color: transparent;
 
     --input-border-color: #e29dee;
 
@@ -93,33 +193,3 @@
     --checkbox-checked-color: #e29dee;
 }
 
-[data-theme='black-dark'] {
-    /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #232323;
-    --main-shadow-color: black;
-
-    /* Big blob that contains the other blobs */
-    --body-background-color: black;
-
-    --heading-background-gradient: #4e4e4e;
-    --heading-text-color: #cbc7c0;
-
-    /* Applies to textarea/input blob and results blob */
-    --content-background-color: #3c3c3c;
-    --content-text-color: #cbc7c0;
-
-    --input-border-color: #5d5d5d;
-
-    --textarea-background-color: black;
-    --textarea-shadow-color: #14180b;
-    --textarea-text-color: #cbc7c0;
-    --placeholder-text-color: #cbc7c0A6;
-
-    --textarea-background-color-focus: black;
-    --textarea-border-color-focus: #dc9e29;
-
-    --button-background-gradient: black;
-    --button-text: cbc7c0;
-
-    --checkbox-checked-color: #dc9e29;
-}
