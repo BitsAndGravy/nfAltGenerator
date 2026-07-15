@@ -96,18 +96,18 @@
 
 [data-theme='green-dark'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #132641;
+    --main-background-gradient: #2f7c5b, #235c52, #123542;
     --main-shadow-color: rgba(0, 0, 0, 0.753);
 
     /* Big blob that contains the other blobs */
-    --body-background-gradient: #2f7c5b, #235c52, #123542;
-    --body-border-color: #398d57;
+    --body-background-gradient: #132641;
+    --body-border-color: transparent;
 
-    --heading-background-gradient: #212242, #352c4e;
+    --heading-background-gradient: #2f7c5b;
     --heading-text-color: #e7f0cc;
 
     /* Applies to textarea/input blob and results blob */
-    --content-background-color: #0f203180;
+    --content-background-color: #235c52;
     --content-text-color: #e7f0cc;
     --content-border-color: black;
 
