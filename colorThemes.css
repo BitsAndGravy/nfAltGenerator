@@ -94,6 +94,39 @@
     --checkbox-checked-color: #ffa200;
 }
 
+[data-theme='blue-dark'] {
+    /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
+    --main-background-gradient: #0a1026;
+    --main-shadow-color: black;
+
+    /* Big blob that contains the other blobs */
+    --body-background-gradient: #1c397a, #172754;
+    --body-border-color: #a6fcfa;
+
+    --heading-background-gradient: black;
+    --heading-text-color: black;
+
+    /* Applies to textarea/input blob and results blob */
+    --content-background-color: #0000006c;
+    --content-text-color: #d0fefd;
+    --content-border-color: #a6fcfa;
+
+    --input-border-color: #a6fcfa;
+
+    --textarea-background-color: #0a1026;
+    --textarea-shadow-color: var(--main-shadow-color);
+    --textarea-text-color: #e7fefe;
+    --placeholder-text-color: #d0fefdab;
+
+    --textarea-background-color-focus: #0a10269c;
+    --textarea-border-color-focus: #ff8c8c;
+
+    --button-background-gradient: #1c397a, #172754;
+    --button-text: #d0fefd;
+
+    --checkbox-checked-color: #ff8c8c;
+}
+
 [data-theme='green-dark'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
     --main-background-gradient: #2f7c5b, #235c52, #123542;
