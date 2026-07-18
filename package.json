@@ -1,0 +1,27 @@
+{
+  "name": "nf-alt-generator",
+  "version": "1.0.0",
+  "description": "Alt Extractor - A tool for extracting and managing pharmaceutical alternative medications",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BitsAndGravy/nfAltGenerator.git"
+  },
+  "keywords": [
+    "pharmaceutical",
+    "alternatives",
+    "extractor"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BitsAndGravy/nfAltGenerator/issues"
+  },
+  "homepage": "https://github.com/BitsAndGravy/nfAltGenerator#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
