@@ -5,6 +5,14 @@
     <title>Alt Extractor</title>
     <link rel="shortcut icon" type="x-icon" href="favicon.ico">
     <link rel="stylesheet" href="colorThemes.css">
+
+    <!--Allow Vercel Analytics-->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+
     <script>
         window.onload = function() {
             document.getElementById('themeSelect').value = localStorage.getItem('altExtractorTheme');
