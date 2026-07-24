@@ -100,15 +100,15 @@
     --main-shadow-color: #1f1909;
 
     /* Big blob that contains the other blobs  */
-    --body-background-gradient: #172754;
-    --body-border-color: #a6fcfb4c;
+    --body-background-gradient: #242939;
+    --body-border-color: #dafc002c;
 
     --heading-background-gradient: #2457bd, #1c397a;
     --heading-text-color: black;
 
     /* Applies to textarea/input blob and results blob */
     --content-background-color: #000000c5;
-    --content-text-color: #d0fefde0;
+    --content-text-color: #d0fefdf2;
     --content-border-color: #a6fcfb4c;
 
     --input-border-color: #a6fcfb89;
@@ -119,12 +119,12 @@
     --placeholder-text-color: #d0fefdab;
 
     --textarea-background-color-focus: #0a10269c;
-    --textarea-border-color-focus: #ff8c8c;
+    --textarea-border-color-focus: #dafc00db;
 
     --button-background-gradient: #2457bd, #1c397a;
     --button-text: #d0fefd;
 
-    --checkbox-checked-color: #ff8c8c;
+    --checkbox-checked-color: var(--textarea-border-color-focus);
 }
 
 [data-theme='green-dark'] {
