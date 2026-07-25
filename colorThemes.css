@@ -85,8 +85,8 @@
     --textarea-text-color: black;
     --placeholder-text-color: #757575;
 
-    --textarea-background-color-focus: #faf7f5e4;
-    --textarea-border-color-focus: #ffa200;
+    --textarea-background-color-focus: #f5faf9e4;
+    --textarea-border-color-focus: #0077ff;
 
     --button-background-gradient: #00c3ffc6, #0093ffc6;
     --button-text: black;
@@ -108,7 +108,7 @@
 
     /* Applies to textarea/input blob and results blob */
     --content-background-color: #000000c5;
-    --content-text-color: #d0fefdf2;
+    --content-text-color: #d0fefdfb;
     --content-border-color: #a6fcfb4c;
 
     --input-border-color: #a6fcfb89;
@@ -182,10 +182,10 @@
     --textarea-background-color: #192244ad;
     --textarea-shadow-color: #14180b;
     --textarea-text-color: #cbc7c0;
-    --placeholder-text-color: #cbc7c0A6;
+    --placeholder-text-color: #cbc7c0b4;
 
     --textarea-background-color-focus: #131a33e0;
-    --textarea-border-color-focus: #cd94da;
+    --textarea-border-color-focus: #cd94dacb;
 
     --button-background-gradient: #f9e1a1;
     --button-text: #212048;
