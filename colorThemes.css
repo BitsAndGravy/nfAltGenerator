@@ -32,12 +32,12 @@
 
 [data-theme='black-dark'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #232323;
+    --main-background-gradient: #232323, black;
     --main-shadow-color: black;
 
     /* Big blob that contains the other blobs */
-    --body-background-gradient: black;
-    --body-border-color: #dc9e29;
+    --body-background-gradient: #2f2e2d;
+    --body-border-color: #dc9d29d6;
 
     --heading-background-gradient: black;
     --heading-text-color: #cbc7c0;
@@ -49,13 +49,13 @@
 
     --input-border-color: #5d5d5d;
 
-    --textarea-background-color: black;
+    --textarea-background-color: #131313;
     --textarea-shadow-color: #14180b;
     --textarea-text-color: #cbc7c0;
     --placeholder-text-color: #cbc7c0A6;
 
     --textarea-background-color-focus: black;
-    --textarea-border-color-focus: #dc9e29;
+    --textarea-border-color-focus: #dc9d29d6;
 
     --button-background-gradient: black;
     --button-text: #cbc7c0;
@@ -65,7 +65,7 @@
 
 [data-theme='blue-light'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #0077ff, #00c3ff;
+    --main-background-gradient: #1974dd, #1dbaea;
     --main-shadow-color: #302a1f83;
 
     /* Big blob that contains the other blobs */
@@ -96,7 +96,7 @@
 
 [data-theme='blue-dark'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #0077ff, #0a1026;
+    --main-background-gradient: #2477d5, #0a1026;
     --main-shadow-color: #1f1909;
 
     /* Big blob that contains the other blobs  */
