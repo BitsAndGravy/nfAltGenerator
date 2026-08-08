@@ -104,11 +104,11 @@
     --body-border-color: #dafc002c;
 
     --heading-background-gradient: #2457bd, #1c397a;
-    --heading-text-color: black;
+    --heading-text-color: #efffff;
 
     /* Applies to textarea/input blob and results blob */
     --content-background-color: #000000c5;
-    --content-text-color: #d0fefdfb;
+    --content-text-color: #d0f0f0fb;
     --content-border-color: #a6fcfb4c;
 
     --input-border-color: #a6fcfb89;
@@ -187,7 +187,7 @@
     --textarea-background-color-focus: #131a33e0;
     --textarea-border-color-focus: #cd94dacb;
 
-    --button-background-gradient: #f9e1a1;
+    --button-background-gradient: #f9e1a1, #f0bf7b;
     --button-text: #212048;
 
     --checkbox-checked-color: #cd94da;
@@ -236,19 +236,19 @@
     --body-border-color: #640f2b;
 
     --heading-background-gradient: #7b1231, #791330;
-    --heading-text-color: #cccccc;
+    --heading-text-color: #e1ced6;
 
     /* Applies to textarea/input blob and results blob */
     --content-background-color: #250815;
-    --content-text-color: #cccccc;
+    --content-text-color: #dfdfdf;
     --content-border-color: #7b1231;
 
     --input-border-color: #7b1231;
 
     --textarea-background-color: #1105099d;
     --textarea-shadow-color: var(--main-shadow-color);
-    --textarea-text-color: #cccccc;
-    --placeholder-text-color: #ccccccaf;
+    --textarea-text-color: #e1ced6;
+    --placeholder-text-color: #e1ced6d5;
 
     --textarea-background-color-focus: #110509d7;
     --textarea-border-color-focus: #7b1231;
@@ -269,7 +269,7 @@
     --body-border-color: #b59484;
 
     --heading-background-gradient: white;
-    --heading-text-color: white;
+    --heading-text-color: #1d2a2c;
 
     /* Applies to textarea/input blob and results blob */
     --content-background-color: white;
