@@ -32,11 +32,11 @@
 
 [data-theme='black-dark'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #232323, black;
+    --main-background-gradient: #2f2e2d, black;
     --main-shadow-color: black;
 
     /* Big blob that contains the other blobs */
-    --body-background-gradient: #2f2e2d;
+    --body-background-gradient: #2f2e2d, #232323;
     --body-border-color: #dc9d29d6;
 
     --heading-background-gradient: black;
@@ -224,6 +224,39 @@
     --button-text: black;
 
     --checkbox-checked-color: #e29dee;
+}
+
+[data-theme='red-dark'] {
+    /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
+    --main-background-gradient: #250815, #791330;
+    --main-shadow-color: black;
+
+    /* Big blob that contains the other blobs */
+    --body-background-gradient: black;
+    --body-border-color: #640f2b;
+
+    --heading-background-gradient: #7b1231, #791330;
+    --heading-text-color: #cccccc;
+
+    /* Applies to textarea/input blob and results blob */
+    --content-background-color: #250815;
+    --content-text-color: #cccccc;
+    --content-border-color: #7b1231;
+
+    --input-border-color: #7b1231;
+
+    --textarea-background-color: #1105099d;
+    --textarea-shadow-color: var(--main-shadow-color);
+    --textarea-text-color: #cccccc;
+    --placeholder-text-color: #ccccccaf;
+
+    --textarea-background-color-focus: #110509d7;
+    --textarea-border-color-focus: #7b1231;
+
+    --button-background-gradient: #250815, #791330;
+    --button-text: #cccccc;
+
+    --checkbox-checked-color: #f17291;
 }
 
 [data-theme='rose-gold-light'] {
