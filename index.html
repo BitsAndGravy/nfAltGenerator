@@ -110,13 +110,19 @@
                 }
 
                 // Remove extra text 'The following may be requested through prior authorization'
-                if(allDrugs[i].slice(0, 60) === 'The following may be requested through prior authorization [') {
-                    allDrugs[i] = allDrugs[i].slice(60);
+                let phrase1 = 'The following may be requested through prior authorization [';
+                let phrase2 = 'The following may be requested through prior authorization';
+                let phrase3 = '(may be requested through a prior authorization)';
+
+                if(allDrugs[i].slice(0, phrase1.length) === phrase1) {
+                    allDrugs[i] = allDrugs[i].slice(phrase1.length);
                     allDrugs[i] = allDrugs[i].charAt(0).toUpperCase() + allDrugs[i].slice(1);
 
-                } else if(allDrugs[i].slice(0, 58) === 'The following may be requested through prior authorization') {
+                } else if(allDrugs[i] === phrase2) {
                     allDrugs.splice(i, 1);
                     i--;
+                } else if(allDrugs[i].slice(-48) === phrase3) {
+                    allDrugs[i] = allDrugs[i].slice(0, -phrase3.length);
                 }
 
                 // Remove 'Or inability to use all alternatives'
