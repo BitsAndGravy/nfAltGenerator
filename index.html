@@ -67,13 +67,19 @@
             
             // How to handle 'and'
             for(i = 0; i < drugList.length; i++) {
-                // If the word and is present, split up the element (also removes 'and'). Creates an array.             
-                let newDrugsList = drugList[i].split(" and ");
+                if(drugList[i].slice(0, 10) !== ' carbidopa') {
                 
-                // Create a new drug list of items (no array within an array problem). Works if there are one or two elements in newDrugsList.
-                for(k = 0; k < newDrugsList.length; k++) {
-                    allDrugs.push(newDrugsList[k]);
-                };
+                    // If the word 'and' is present, split up the element (also removes 'and'). Creates an array.             
+                    let newDrugsList = drugList[i].split(" and ");
+                    
+                    // Create a new drug list of items (no array within an array problem). Works if there are one or two elements in newDrugsList.
+                    for(k = 0; k < newDrugsList.length; k++) {
+                        allDrugs.push(newDrugsList[k]);
+                    };
+                } else {
+                    let newDrugsList = drugList[i];
+                    allDrugs.push(newDrugsList);
+                }
             }
 
             // Polish on items and the array
@@ -81,17 +87,7 @@
 
                 // Remove spaces at beginning/end of each item
                 allDrugs[i] = allDrugs[i].trim();
-                
-                // Handling blank entries
-                if(allDrugs[i] === '') {
-
-                    // Remove item from array
-                    allDrugs.splice(i, 1);
-
-                    //Reset i, otherwise would skip an item
-                    i--;
-                }
-                
+                 
                 // Capitalize each item
                 allDrugs[i] = allDrugs[i].charAt(0).toUpperCase() + allDrugs[i].slice(1); 
 
@@ -100,6 +96,25 @@
                     allDrugs[i] = allDrugs[i].slice(0, -1);
                 }
             };
+
+            //Removing entries
+            for(i=0; i < allDrugs.length; i++) {
+                // Remove blank entries
+                if(allDrugs[i] === '') {
+
+                    // Remove item from array
+                    allDrugs.splice(i, 1);
+
+                    //Reset i, otherwise would skip an item
+                    i--;
+                }
+
+                // Remove extra text 'The following may be requested through prior authorization'
+                if(allDrugs[i].slice(0, 13) === 'The following') {
+                    allDrugs.splice(i, 1);
+                    i--;
+                }
+            }
 
             // Check for items that are numbers only, add them to previous item in array.
             for(i = 0; i < allDrugs.length; i++) {
@@ -427,4 +442,3 @@
 
     </div>
 </body>
-
