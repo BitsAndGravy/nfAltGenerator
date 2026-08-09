@@ -110,11 +110,23 @@
                 }
 
                 // Remove extra text 'The following may be requested through prior authorization'
-                if(allDrugs[i].slice(0, 13) === 'The following') {
+                if(allDrugs[i].slice(0, 60) === 'The following may be requested through prior authorization [') {
+                    allDrugs[i] = allDrugs[i].slice(60);
+                    allDrugs[i] = allDrugs[i].charAt(0).toUpperCase() + allDrugs[i].slice(1);
+
+                } else if(allDrugs[i].slice(0, 58) === 'The following may be requested through prior authorization') {
+                    allDrugs.splice(i, 1);
+                    i--;
+                }
+
+                // Remove 'Or inability to use all alternatives'
+                let inabilityPhrase = 'Or inability to use all alternatives';
+                if(allDrugs[i] === inabilityPhrase) {
                     allDrugs.splice(i, 1);
                     i--;
                 }
             }
+            // 12345 57
 
             // Check for items that are numbers only, add them to previous item in array.
             for(i = 0; i < allDrugs.length; i++) {
