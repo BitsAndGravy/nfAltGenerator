@@ -33,17 +33,17 @@
             // Split first paragraph at the colon
             let parsedByColon = firstLine.split(":");
 
-            // Adjust delimiter if no colon
+            // Adjust delimiter (intended as backup if no colon)
             if(parsedByColon.length === 1) {
                 parsedByColon = firstLine.split('such as, but not limited to,');
             }
 
-            // Adjust delimiter again if no colon
+            // Adjust delimiter again (backup backup)
             if(parsedByColon.length === 1) {
                 parsedByColon = firstLine.split('such as');
             }
 
-            // Error if blank or no appropriate delimiter
+            // Return error if blank or no appropriate delimiter
             if(parsedByColon == '') {
                 document.getElementById('superDiv').innerText = "Invalid entry. No text to evaluate. ";
             } else if(parsedByColon.length === 1) {
@@ -58,7 +58,7 @@
             // If there were multiple colons (i.e. multiple arrays), create one string.
             let afterColonJoined = afterColon.join(' , ');
             
-            // Split up drug names by commas
+            // Split up drug names using commas as delimiter
             let drugList = afterColonJoined.split(",");  
             
             // Defined for future use
@@ -67,18 +67,23 @@
             
             // How to handle 'and'
             for(i = 0; i < drugList.length; i++) {
+                // Handling 'carbidopa and levodopa'
+                // If current element does not start with 'carbidopa', split element at 'and', add both entries to the new drug list.
                 if(drugList[i].slice(0, 10) !== ' carbidopa') {
+
+                    // !! Dosage form adjuster will go here. i.e. if doxycycline tablets and capsules, leave as one entry.
                 
-                    // If the word 'and' is present, split up the element (also removes 'and'). Creates an array.             
+                    // If the word 'and' is present, split up the element (also removes 'and'). Creates an array. Also works if no 'and' present.           
                     let newDrugsList = drugList[i].split(" and ");
                     
                     // Create a new drug list of items (no array within an array problem). Works if there are one or two elements in newDrugsList.
                     for(k = 0; k < newDrugsList.length; k++) {
                         allDrugs.push(newDrugsList[k]);
                     };
+                
+                // If current element starts with 'carbidopa', add the whole entry to the new list. Works for 'carbidopa and levodopa' and 'carbidopa / levodopa'.
                 } else {
-                    let newDrugsList = drugList[i];
-                    allDrugs.push(newDrugsList);
+                    allDrugs.push(drugList[i]);
                 }
             }
 
@@ -132,7 +137,6 @@
                     i--;
                 }
             }
-            // 12345 57
 
             // Check for items that are numbers only, add them to previous item in array.
             for(i = 0; i < allDrugs.length; i++) {
