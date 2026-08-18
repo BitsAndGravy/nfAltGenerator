@@ -251,12 +251,12 @@
     --placeholder-text-color: #e1ced6d5;
 
     --textarea-background-color-focus: #110509d7;
-    --textarea-border-color-focus: #7b1231;
+    --textarea-border-color-focus: #dbb025;
 
     --button-background-gradient: #250815, #791330;
     --button-text: #cccccc;
 
-    --checkbox-checked-color: #f17291;
+    --checkbox-checked-color: #e7bc2c;
 }
 
 [data-theme='rose-gold-light'] {
