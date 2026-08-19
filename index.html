@@ -202,7 +202,7 @@
             document.getElementById('textInput').focus();
         }
 
-    /* ||| Theme changer */
+        /* ||| Theme changer */
         function changeTheme(theme) { 
             let htmlTag = document.getElementsByTagName("html")[0];
             
@@ -216,13 +216,16 @@
         const savedTheme = localStorage.getItem('altExtractorTheme');
         document.getElementsByTagName("html")[0].setAttribute("data-theme", savedTheme); // Add previously saved theme
 
+        function copyText() {
+            let textToCopy = document.getElementById('textInput');
+            navigator.clipboard.writeText(textToCopy.value);
+        }
+
+
     </script>
 
 
     <style>
-
-        
-
         body, textarea {
             font-family: Arial, Helvetica, sans-serif;
             color: var(--content-text-color);
@@ -404,7 +407,6 @@
                     <div id="inputs" class="flex-box-contents flex-box-a">
                         <textarea
                             id="textInput"
-                            class="chicken"
                             placeholder="paste TextExpander snippet here, then click Extract"
                             cols='100';
                             rows='20';
@@ -412,6 +414,7 @@
 
                         <div id="buttons" class="buttons">
                             <button type="button" onclick="getAlternatives()">Extract</button>
+                            <button type="button" onclick="copyText()">Copy</button>
                             <button type="button" onclick="clearTextarea()">Clear</button>
                         </div>
 
@@ -421,7 +424,7 @@
                         <H4>All alternatives must be:</H4>
                         <ol>
                             <li>In the first paragraph.</li>
-                            <li>Listed after at a colon. </li>
+                            <li>Listed after a colon. </li>
                         </ol>
 
                         <H4>Limitations:</H4>
