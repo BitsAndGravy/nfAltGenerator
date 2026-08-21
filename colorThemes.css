@@ -200,7 +200,7 @@
 
     /* Big blob that contains the other blobs */
     --body-background-gradient: #4e4dad, #954ac9, #d399fa;
-    --body-border-color: transparent;
+    --body-border-color: #954ac9;
 
     --heading-background-gradient: #22134c;
     --heading-text-color: azure;
