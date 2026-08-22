@@ -64,10 +64,18 @@
             // Defined for future use
             let allDrugs = [];
             let allDrugsNoNumbers = [];
-            let drugFormulations = [
-                'tablets',
+            let dosageFormulationsList = [
+                'capsule',
                 'capsules',
+                'diskus',
+                'diskus)',
+                'flexpen',
+                'flextouch',
+                'penfill',
+                'penfill)', // Only appears in one DL
                 'suspension',
+                'tablet',
+                'tablets',
             ];
             
             // How to handle 'and'
@@ -148,7 +156,7 @@
 
                 // regex expression is / ... /, ^ first element, \d is digit (0-9)
                 if(/^\d/.test(allDrugs[i])) {
-                    let previousElement = i-1
+                    let previousElement = i-1;
 
                     // Combine elements. 
                         // Example, if i is index 5 (10 mg), previousElement would be index 4 (glipizide 2.5 mg). 
@@ -164,6 +172,19 @@
 
                         // Create new element that combines previous entry and current entry
                         allDrugs[previousElement] + ", " + allDrugs[i]);
+
+                    // Reset i, otherwise will skip an item
+                    i--;
+                }
+            }
+
+            // Combine dosage forms, separate by a comma.
+            for(i = 0; i < allDrugs.length; i++) {
+                let lowerCaseItem = allDrugs[i].toLowerCase();
+                if (dosageFormulationsList.includes(lowerCaseItem)) {
+                    let previousElement = i-1;
+                    // Combine elements. 
+                    allDrugs.splice(previousElement, 2, allDrugs[previousElement] + ", " + allDrugs[i]);
 
                     // Reset i, otherwise will skip an item
                     i--;
