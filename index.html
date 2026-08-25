@@ -13,7 +13,19 @@
 
     <script>
         window.onload = function() {
-            document.getElementById('themeSelect').value = localStorage.getItem('altExtractorTheme');
+            setTheme();
+        }
+
+        function setTheme() {
+            let chosenTheme = localStorage.getItem('altExtractorTheme');
+            let defaultTheme = 'orange-light';
+            let themeSelect = document.getElementById('themeSelect');
+
+            if (chosenTheme) {
+                themeSelect.value = localStorage.getItem('altExtractorTheme');
+            } else {
+                themeSelect.value = defaultTheme;
+            }
         }
 
         // Extract button
@@ -446,6 +458,7 @@
 
             .column {
                 width: 100%;
+                text-align: left;
             }
         }
     </style>
