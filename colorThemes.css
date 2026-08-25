@@ -194,13 +194,13 @@
 }
 
 [data-theme='purple-dark'] {
-    /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
+    /* d399fa For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
     --main-background-gradient: #22134c;
     --main-shadow-color: #14180b;
 
     /* Big blob that contains the other blobs */
-    --body-background-gradient: #4e4dad, #954ac9, #d399fa;
-    --body-border-color: #954ac9;
+    --body-background-gradient: #4e4dad, #954ac9;
+    --body-border-color: #d399fa;
 
     --heading-background-gradient: #22134c;
     --heading-text-color: azure;
