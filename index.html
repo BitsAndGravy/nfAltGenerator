@@ -157,12 +157,15 @@
                 let phrase2 = 'The following may be requested through prior authorization';
                 let phrase3 = '(may be requested through a prior authorization)';
 
-                // e.g. Fibromyalgia DL
+                // Fibromyalgia 
                 let phrase4 = '[may be requested through prior authorization])';
 
-                // i.e. Acne, topical, age 35 and older
+                // Acne, topical, age 35 and older
                 let phrase5 = 'The following medications (may be requested through a prior authorization for members age 35';
                 let phrase6 = 'Older)';
+
+                // Dry eyes (Eysuvis, Tyrvaya, Cequa, Vevye, Tryptyr)
+                let phrase7 = '(all may be requested through a prior authorization)'
 
                 // Removes phrase from beginning of string
                 if(allDrugs[i].slice(0, phrase1.length) === phrase1) {
@@ -186,6 +189,10 @@
                 } else if((allDrugs[i] === phrase5) || (allDrugs[i] === phrase6)) {
                     allDrugs.splice(i, 1);
                     i--;
+
+                // Removes from end of entry
+                } else if(allDrugs[i].slice(-phrase7.length) === phrase7) {
+                    allDrugs[i] = allDrugs[i].slice(0, -phrase7.length);
                 }
 
                 // Remove 'Or inability to use all alternatives'
