@@ -160,12 +160,16 @@
                 // e.g. Fibromyalgia DL
                 let phrase4 = '[may be requested through prior authorization])';
 
+                // i.e. Acne, topical, age 35 and older
+                let phrase5 = 'The following medications (may be requested through a prior authorization for members age 35';
+                let phrase6 = 'Older)';
+
                 // Removes phrase from beginning of string
                 if(allDrugs[i].slice(0, phrase1.length) === phrase1) {
                     allDrugs[i] = allDrugs[i].slice(phrase1.length);
                     allDrugs[i] = allDrugs[i].charAt(0).toUpperCase() + allDrugs[i].slice(1);
 
-                // Removes complete entry
+                // Removes entry
                 } else if(allDrugs[i] === phrase2) {
                     allDrugs.splice(i, 1);
                     i--;
@@ -177,6 +181,11 @@
                 // Removes from end of entry
                 } else if(allDrugs[i].slice(-phrase4.length) === phrase4) {
                     allDrugs[i] = allDrugs[i].slice(0, -phrase4.length);
+
+                // Remove entire entry, acne age 35
+                } else if((allDrugs[i] === phrase5) || (allDrugs[i] === phrase6)) {
+                    allDrugs.splice(i, 1);
+                    i--;
                 }
 
                 // Remove 'Or inability to use all alternatives'
