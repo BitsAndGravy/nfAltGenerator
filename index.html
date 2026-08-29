@@ -47,9 +47,11 @@
             let firstLine = parsedByLine[0];      
             
             // Split first paragraph at the colon
+            // - Scenario for most DLs, including:
             let parsedByColon = firstLine.split(":");
 
-            // Adjust delimiter (intended as backup if no colon)
+            // Adjust delimiter (intended as backup if no colon) 
+            // - Exclusively for behavioral health TX
             if(parsedByColon.length === 1) {
                 parsedByColon = firstLine.split('such as, but not limited to,');
             }
@@ -78,6 +80,7 @@
             let drugList = afterColonJoined.split(",");  
             
             // Defined for future use
+            let noSuchAs = [];
             let allDrugs = [];
             let allDrugsNoNumbers = [];
             let dosageFormulationsList = [
@@ -93,17 +96,23 @@
                 'tablet',
                 'tablets',
             ];
+
+            // If not already done, split items by 'such as'
+            for(i = 0; i < drugList.length; i++) {
+                let noSuchAsTemp = drugList[i].split("such as");
+                for(k = 0; k < noSuchAsTemp.length; k++) {
+                    noSuchAs.push(noSuchAsTemp[k]);
+                };            
+            }
             
             // How to handle 'and'
-            for(i = 0; i < drugList.length; i++) {
+            for(i = 0; i < noSuchAs.length; i++) {
                 // Handling 'carbidopa and levodopa'
                 // If current element does not start with 'carbidopa', split element at 'and', add both entries to the new drug list.
-                if(drugList[i].slice(0, 10) !== ' carbidopa') {
-
-                    // !! Dosage form adjuster will go here. i.e. if doxycycline tablets and capsules, leave as one entry.
+                if(noSuchAs[i].slice(0, 10) !== ' carbidopa') {
                 
                     // If the word 'and' is present, split up the element (also removes 'and'). Creates an array. Also works if no 'and' present.           
-                    let newDrugsList = drugList[i].split(" and ");
+                    let newDrugsList = noSuchAs[i].split(" and ");
                     
                     // Create a new drug list of items (no array within an array problem). Works if there are one or two elements in newDrugsList.
                     for(k = 0; k < newDrugsList.length; k++) {
@@ -148,18 +157,30 @@
                 let phrase2 = 'The following may be requested through prior authorization';
                 let phrase3 = '(may be requested through a prior authorization)';
 
+                // e.g. Fibromyalgia DL
+                let phrase4 = '[may be requested through prior authorization])';
+
+                // Removes phrase from beginning of string
                 if(allDrugs[i].slice(0, phrase1.length) === phrase1) {
                     allDrugs[i] = allDrugs[i].slice(phrase1.length);
                     allDrugs[i] = allDrugs[i].charAt(0).toUpperCase() + allDrugs[i].slice(1);
 
+                // Removes complete entry
                 } else if(allDrugs[i] === phrase2) {
                     allDrugs.splice(i, 1);
                     i--;
+
+                // Removes from end of entry
                 } else if(allDrugs[i].slice(-48) === phrase3) {
                     allDrugs[i] = allDrugs[i].slice(0, -phrase3.length);
+
+                // Removes from end of entry
+                } else if(allDrugs[i].slice(-phrase4.length) === phrase4) {
+                    allDrugs[i] = allDrugs[i].slice(0, -phrase4.length);
                 }
 
                 // Remove 'Or inability to use all alternatives'
+                // - Exclusively TX behavioral health
                 let inabilityPhrase = 'Or inability to use all alternatives';
                 if(allDrugs[i] === inabilityPhrase) {
                     allDrugs.splice(i, 1);
@@ -168,6 +189,7 @@
             }
 
             // Check for items that are numbers only, add them to previous item in array.
+            // - e.g. keeps 'brimonidine (0.1%, 0.15%, 0.2%) solution' as one entry instead of splitting at commas
             for(i = 0; i < allDrugs.length; i++) {
 
                 // regex expression is / ... /, ^ first element, \d is digit (0-9)
@@ -195,6 +217,7 @@
             }
 
             // Combine dosage forms, separate by a comma.
+            // - e.g. keeps 'Novolog (vials, Flexpen, Penfill)' as a single entry
             for(i = 0; i < allDrugs.length; i++) {
                 let lowerCaseItem = allDrugs[i].toLowerCase();
                 if (dosageFormulationsList.includes(lowerCaseItem)) {
@@ -210,7 +233,7 @@
             // Sort alphabetically
             let drugListSorted = allDrugs.sort();     
         
-             // For loop to add each drug to the page
+             // Add each drug to the page
             for(i = 0; i < allDrugs.length; i++) {     
                 // Create checkbox    
                 let check = document.createElement('input');
