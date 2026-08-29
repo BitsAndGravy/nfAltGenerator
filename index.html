@@ -562,11 +562,13 @@
 
 <body>
     <div class="page-wrapper content-background">
+        <!-- Heading -->
         <div id="heading" class="heading-box box-padding">
             <H2>Alt Extractor</H2>
             <p>Returns a list of drug names from a denial language (DL) snippet.</p>
         </div>
 
+        <!-- Snippet box and buttons -->
         <div id="inputAndRequirements" class="snippet-box box-padding">
 
             <div id="inputs">
@@ -581,42 +583,10 @@
                     <button type="button" onclick="copyText()">Copy</button>
                     <button type="button" onclick="clearTextarea()">Clear</button>
                 </div>
-
             </div>
-            <!--
-
-            <div id="inputs" class="flex-box-contents flex-box-a">
-                <textarea
-                    id="textInput"
-                    placeholder="paste TextExpander snippet here, then click Extract"
-                    cols='100';
-                    rows='20';
-                    ></textarea>
-
-                <div id="buttons" class="buttons">
-                    <button type="button" onclick="getAlternatives()">Extract</button>
-                    <button type="button" onclick="copyText()">Copy</button>
-                    <button type="button" onclick="clearTextarea()">Clear</button>
-                </div>
-
-            </div>
-
-            <div id="requirements" class="flex-box-contents flex-box-b">
-                <H4>All alternatives must be:</H4>
-                <ol>
-                    <li>In the first paragraph.</li>
-                    <li>Listed after a colon. </li>
-                </ol>
-
-                <H4>Limitations:</H4>
-                <ol>
-                    <li>Drugs may be at the end of text </li>
-                    <li>Creates a single list; results are inaccurate if DL contains complex or multiple lists. Be familiar with the DL you are using. </li>
-                </ol>
-            </div>
-        -->
         </div>
 
+        <!-- Results -->
         <div class="return-box box-padding">
             <h4>Result:</h4>
             <div id="superDiv" style="padding-left: 20px;">
@@ -624,15 +594,7 @@
         </div>
         <br>
 
-
-
-
-
-
-        
-
-
-
+        <!-- Extras -->
         <div class="extrasContainer box-padding">
             <div class="extrasHeader" onclick="showList()">
                 <span id="extrasDivAdd" class="material-symbols-outlined showContent">
