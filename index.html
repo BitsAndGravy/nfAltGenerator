@@ -51,12 +51,12 @@
             let parsedByColon = firstLine.split(":");
 
             // Adjust delimiter (intended as backup if no colon) 
-            // - Exclusively for behavioral health TX
+            // - Exclusively for behavioral health TX, ex NF58
             if(parsedByColon.length === 1) {
                 parsedByColon = firstLine.split('such as, but not limited to,');
             }
 
-            // Adjust delimiter again (backup backup)
+            // Adjust delimiter again (final backup backup)
             if(parsedByColon.length === 1) {
                 parsedByColon = firstLine.split('such as');
             }
@@ -77,10 +77,11 @@
             let afterColonJoined = afterColon.join(' , ');
             
             // Split up drug names using commas as delimiter
-            let drugList = afterColonJoined.split(",");  
+            let drugList = afterColonJoined.split(',');  
             
             // Defined for future use
             let noSuchAs = [];
+            let noSeparately = [];
             let allDrugs = [];
             let allDrugsNoNumbers = [];
             let dosageFormulationsList = [
@@ -97,22 +98,31 @@
                 'tablets',
             ];
 
-            // If not already done, split items by 'such as'
+            // Additional split modifiers
             for(i = 0; i < drugList.length; i++) {
                 let noSuchAsTemp = drugList[i].split("such as");
                 for(k = 0; k < noSuchAsTemp.length; k++) {
                     noSuchAs.push(noSuchAsTemp[k]);
                 };            
             }
-            
-            // How to handle 'and'
+
+            // Additional split modifiers
             for(i = 0; i < noSuchAs.length; i++) {
+                let noSeparatelyTemp = noSuchAs[i].split("separately in addition to");
+                for(k = 0; k < noSeparatelyTemp.length; k++) {
+                    noSeparately.push(noSeparatelyTemp[k]);
+                };            
+            }
+            
+
+            // How to handle 'and'
+            for(i = 0; i < noSeparately.length; i++) {
                 // Handling 'carbidopa and levodopa'
                 // If current element does not start with 'carbidopa', split element at 'and', add both entries to the new drug list.
-                if(noSuchAs[i].slice(0, 10) !== ' carbidopa') {
+                if(noSeparately[i].slice(0, 10) !== ' carbidopa') {
                 
                     // If the word 'and' is present, split up the element (also removes 'and'). Creates an array. Also works if no 'and' present.           
-                    let newDrugsList = noSuchAs[i].split(" and ");
+                    let newDrugsList = noSeparately[i].split(" and ");
                     
                     // Create a new drug list of items (no array within an array problem). Works if there are one or two elements in newDrugsList.
                     for(k = 0; k < newDrugsList.length; k++) {
@@ -125,6 +135,28 @@
                 }
             }
 
+            // Remove extra text
+            for (i=0; i < allDrugs.length; i++) {
+                allDrugs[i] = allDrugs[i].replace('(', '');
+                allDrugs[i] = allDrugs[i].replace(')', '');
+                allDrugs[i] = allDrugs[i].replace('[', '');
+                allDrugs[i] = allDrugs[i].replace(']', '');
+
+                // Going longest to shortest, otherwise shrter text would leave short text blobs from longer text
+                allDrugs[i] = allDrugs[i].replace('the following medications may be requested through a prior authorization for members age 35', ''); // Acne, topical, age 35 and older                
+                allDrugs[i] = allDrugs[i].replace('this medication may be requested through a prior authorization after trial', ''); // Brand products NF305
+                allDrugs[i] = allDrugs[i].replace('this medication may be requested through a prior authorization', ''); // Brand products NF305
+                allDrugs[i] = allDrugs[i].replace('may be requested through a prior authorization after trial ', ''); // Brand products, continued NF266
+                allDrugs[i] = allDrugs[i].replace('failure of the above preferred alternatives', ''); //Brand products, continued (trial AND failure)
+                allDrugs[i] = allDrugs[i].replace('the following may be requested through prior authorization', '');
+                allDrugs[i] = allDrugs[i].replace('all may be requested through a prior authorization', ''); // Dry eyes (Eysuvis, Tyrvaya, Cequa, Vevye, Tryptyr)
+                allDrugs[i] = allDrugs[i].replace('may be requested through a prior authorization', '');
+                allDrugs[i] = allDrugs[i].replace('may be requested through prior authorization', '');
+                allDrugs[i] = allDrugs[i].replace('or inability to use all alternatives', '');
+                allDrugs[i] = allDrugs[i].replace('the individual ingredients ', '');
+                allDrugs[i] = allDrugs[i].replace('older', ''); // Acne, topical, age 35 and older
+            }
+
             // Polish on items and the array
             for(i=0; i < allDrugs.length; i++) {
 
@@ -134,7 +166,7 @@
                 // Capitalize each item
                 allDrugs[i] = allDrugs[i].charAt(0).toUpperCase() + allDrugs[i].slice(1); 
 
-                // Remove period at end of item
+                // Remove period at end of item (not using 'replace' as decimals are needed)
                 if(allDrugs[i].endsWith('.')) {
                     allDrugs[i] = allDrugs[i].slice(0, -1);
                 }
@@ -143,65 +175,15 @@
             //Removing entries
             for(i=0; i < allDrugs.length; i++) {
                 // Remove blank entries
-                if(allDrugs[i] === '') {
+                if (allDrugs[i] === '') {
 
                     // Remove item from array
                     allDrugs.splice(i, 1);
 
-                    //Reset i, otherwise would skip an item
+                    //Reset i
                     i--;
                 }
 
-                // Remove extra text 'The following may be requested through prior authorization'
-                let phrase1 = 'The following may be requested through prior authorization [';
-                let phrase2 = 'The following may be requested through prior authorization';
-                let phrase3 = '(may be requested through a prior authorization)';
-
-                // Fibromyalgia 
-                let phrase4 = '[may be requested through prior authorization])';
-
-                // Acne, topical, age 35 and older
-                let phrase5 = 'The following medications (may be requested through a prior authorization for members age 35';
-                let phrase6 = 'Older)';
-
-                // Dry eyes (Eysuvis, Tyrvaya, Cequa, Vevye, Tryptyr)
-                let phrase7 = '(all may be requested through a prior authorization)'
-
-                // Removes phrase from beginning of string
-                if(allDrugs[i].slice(0, phrase1.length) === phrase1) {
-                    allDrugs[i] = allDrugs[i].slice(phrase1.length);
-                    allDrugs[i] = allDrugs[i].charAt(0).toUpperCase() + allDrugs[i].slice(1);
-
-                // Removes entry
-                } else if(allDrugs[i] === phrase2) {
-                    allDrugs.splice(i, 1);
-                    i--;
-
-                // Removes from end of entry
-                } else if(allDrugs[i].slice(-48) === phrase3) {
-                    allDrugs[i] = allDrugs[i].slice(0, -phrase3.length);
-
-                // Removes from end of entry
-                } else if(allDrugs[i].slice(-phrase4.length) === phrase4) {
-                    allDrugs[i] = allDrugs[i].slice(0, -phrase4.length);
-
-                // Remove entire entry, acne age 35
-                } else if((allDrugs[i] === phrase5) || (allDrugs[i] === phrase6)) {
-                    allDrugs.splice(i, 1);
-                    i--;
-
-                // Removes from end of entry
-                } else if(allDrugs[i].slice(-phrase7.length) === phrase7) {
-                    allDrugs[i] = allDrugs[i].slice(0, -phrase7.length);
-                }
-
-                // Remove 'Or inability to use all alternatives'
-                // - Exclusively TX behavioral health
-                let inabilityPhrase = 'Or inability to use all alternatives';
-                if(allDrugs[i] === inabilityPhrase) {
-                    allDrugs.splice(i, 1);
-                    i--;
-                }
             }
 
             // Check for items that are numbers only, add them to previous item in array.
@@ -322,8 +304,6 @@
             removeSpan.classList.toggle('hideContent');
             removeSpan.classList.toggle('showContent');
         }
-
-
     </script>
 
 
