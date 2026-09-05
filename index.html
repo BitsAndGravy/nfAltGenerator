@@ -146,13 +146,16 @@
                 allDrugs[i] = allDrugs[i].replace('the following medications may be requested through a prior authorization for members age 35', ''); // Acne, topical, age 35 and older                
                 allDrugs[i] = allDrugs[i].replace('this medication may be requested through a prior authorization after trial', ''); // Brand products NF305
                 allDrugs[i] = allDrugs[i].replace('this medication may be requested through a prior authorization', ''); // Brand products NF305
-                allDrugs[i] = allDrugs[i].replace('may be requested through a prior authorization after trial ', ''); // Brand products, continued NF266
-                allDrugs[i] = allDrugs[i].replace('failure of the above preferred alternatives', ''); //Brand products, continued (trial AND failure)
+                allDrugs[i] = allDrugs[i].replace('may be requested through a prior authorization after trial', ''); // Brand products, continued NF266
+                allDrugs[i] = allDrugs[i].replace('failure of the above preferred alternatives', ''); // Brand products, continued (trial AND failure)
+                allDrugs[i] = allDrugs[i].replace('failure of the above preferred medications', '');
                 allDrugs[i] = allDrugs[i].replace('the following may be requested through prior authorization', '');
-                allDrugs[i] = allDrugs[i].replace('all may be requested through a prior authorization', ''); // Dry eyes (Eysuvis, Tyrvaya, Cequa, Vevye, Tryptyr)
+                allDrugs[i] = allDrugs[i].replace('the individual components of the requested medication', ''); // i.e. Diclegis 
+                allDrugs[i] = allDrugs[i].replace('all may be requested through a prior authorization', ''); // i.e. Dry eyes (Eysuvis, Tyrvaya, Cequa, Vevye, Tryptyr)
                 allDrugs[i] = allDrugs[i].replace('may be requested through a prior authorization', '');
                 allDrugs[i] = allDrugs[i].replace('may be requested through prior authorization', '');
                 allDrugs[i] = allDrugs[i].replace('or inability to use all alternatives', '');
+                allDrugs[i] = allDrugs[i].replace('taken together at the same time', ''); // i.e. Diclegis
                 allDrugs[i] = allDrugs[i].replace('the individual ingredients ', '');
                 allDrugs[i] = allDrugs[i].replace('older', ''); // Acne, topical, age 35 and older
             }
