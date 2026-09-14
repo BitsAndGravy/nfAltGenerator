@@ -234,7 +234,7 @@
             // Sort alphabetically
             let drugListSorted = allDrugs.sort();     
         
-             // Add each drug to the page
+            // Add each drug to the page
             for(i = 0; i < allDrugs.length; i++) {     
                 // Create checkbox    
                 let check = document.createElement('input');
@@ -311,11 +311,6 @@
 
 
     <style>
-        body, textarea {
-            font-family: Arial, Helvetica, sans-serif;
-            color: var(--content-text-color);
-        }
-
         body {
             background-image: linear-gradient(var(--main-background-gradient));
             background-repeat: no-repeat;
@@ -325,56 +320,13 @@
             transition: 0.5s ease-in;
         }
 
-        p {
-            margin: 0;
+        body, textarea {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--content-text-color);
         }
 
-        h2 {
-            margin-top: 0;
-        }
-
-        h3 {
-            margin-top: 1px;
-            margin-bottom: 1px;
-        }
-
-        h4 {
-            margin-top: 0;
-        }
-
-        .line-spacing {
-            line-height: 1.4;
-        }
-
-        ol li {
-            margin-bottom: 2px;
-        }
-
-        textarea:focus {
-            outline: solid 1px var(--textarea-border-color-focus);
-            border: solid 1px var(--textarea-border-color-focus);
-            background-color: var(--textarea-background-color-focus);
-        }
-
-        ::placeholder {
-            color: var(--placeholder-text-color);
-        }
-
-        textarea {
-            field-sizing: content; /* height of the textarea will automatically increase based on the number of lines entered. */
-            min-height: 6rem; /* default number of lines to start with */
-            background-color: var(--textarea-background-color);
-            box-shadow: 2px 2px 4px var(--textarea-shadow-color) inset;
-            width: 100%;
-            box-sizing: border-box;
-            
-            border-color: var(--input-border-color);
-            border-radius: 5px;
-            padding: 5px;
-        }
-
-        input[type=checkbox] {
-            accent-color: var(--checkbox-checked-color);
+        .box-padding {
+            padding: 20px;
         }
 
         button {
@@ -397,6 +349,130 @@
         button:active {
             box-shadow: 0px 0px 4px var(--main-shadow-color);
             transform: translateY(4px);
+        }    
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .column {
+            width: 33%;
+            text-align: center;
+        }
+        
+        .content-background {
+            background-image: linear-gradient(var(--body-background-gradient));
+            box-shadow: 6px 6px 18px var(--main-shadow-color);
+            padding: 30px;
+            border-radius: 40px;
+            border: 2px solid var(--body-border-color);
+            transition: 0.5s ease-in;
+        }
+
+        .extrasContainer {
+            box-shadow: 0px 2px 4px var(--main-shadow-color);
+            border-radius: 20px;
+            border: 1px solid var(--content-border-color);
+            color: var(--heading-text-color);
+        }
+
+        .extrasHeader {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+        }
+
+        .footer-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-text {
+            text-align: left;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        h3 {
+            margin-top: 1px;
+            margin-bottom: 1px;
+        }
+
+        h4 {
+            margin-top: 0;
+        }
+
+        .heading-box {
+            background-image: linear-gradient(var(--heading-background-gradient));
+            box-shadow: 0px 2px 4px var(--main-shadow-color);
+            border-radius: 20px;
+            border: 1px solid var(--content-border-color);
+            color: var(--heading-text-color);
+        }
+
+        .hideContent { /* Also see showContent */
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition-property: height;
+            transition: 0.5s;
+            transition-behavior: allow-discrete;
+        }
+
+        input[type=checkbox] {
+            accent-color: var(--checkbox-checked-color);
+        }
+
+        .line-spacing {
+            line-height: 1.4;
+        }
+
+        /* Google symbols reference */
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+
+        ol li {
+            margin-bottom: 2px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .padding-results-left {
+            padding-left: 20px;
+        }
+
+        .page-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        ::placeholder {
+            color: var(--placeholder-text-color);
+        }
+
+        .return-box {
+            background-color: var(--content-background-color);
+            box-shadow: 0px 2px 4px var(--main-shadow-color);
+            border-radius: 20px;
+            border: 1px solid var(--content-border-color);
+            min-height: 100px;
         }
 
         select {
@@ -410,31 +486,19 @@
             transition: all 0.1s ease-out;
         }
 
-        .page-wrapper {
-            max-width: 1000px;
-            margin: 0 auto;
+        /* fallbak for not supported browsers */
+        .showContent { /* Also see hideContent */
+            height: auto; 
+            opacity: 1;
+            transition: 0.5s;
+            overflow: hidden;
         }
 
-        .content-background {
-            background-image: linear-gradient(var(--body-background-gradient));
-            box-shadow: 6px 6px 18px var(--main-shadow-color);
-            padding: 30px;
-            border-radius: 40px;
-            border: 2px solid var(--body-border-color);
-            transition: 0.5s ease-in;
-        }
-
-        .box-padding {
-            padding: 20px;
-        }
-
-        .heading-box {
-            background-image: linear-gradient(var(--heading-background-gradient));
-            box-shadow: 0px 2px 4px var(--main-shadow-color);
-            border-radius: 20px;
-            border: 1px solid var(--content-border-color);
-            color: var(--heading-text-color);
-
+        /* for modern browsers */
+        @supports (height: calc-size(auto, size)) {
+            .showContent {
+                height: calc-size(auto, size);
+            }
         }
 
         .snippet-box {
@@ -452,39 +516,23 @@
             width: 100%;
         }
 
-        .buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 5px;
+        textarea {
+            field-sizing: content; /* height of the textarea will automatically increase based on the number of lines entered. */
+            min-height: 6rem; /* default number of lines to start with */
+            background-color: var(--textarea-background-color);
+            box-shadow: 2px 2px 4px var(--textarea-shadow-color) inset;
+            width: 100%;
+            box-sizing: border-box;
+            
+            border-color: var(--input-border-color);
+            border-radius: 5px;
+            padding: 5px;
         }
 
-        .return-box {
-            background-color: var(--content-background-color);
-            box-shadow: 0px 2px 4px var(--main-shadow-color);
-            border-radius: 20px;
-            border: 1px solid var(--content-border-color);
-            min-height: 100px;
-        }
-
-        .footer {
-            position: fixed;
-            bottom: 15px;
-            right: 15px;
-        }
-
-        .footer-box {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .column {
-            width: 33%;
-            text-align: center;
-        }
-
-        .footer-text {
-            text-align: left;
+        textarea:focus {
+            outline: solid 1px var(--textarea-border-color-focus);
+            border: solid 1px var(--textarea-border-color-focus);
+            background-color: var(--textarea-background-color-focus);
         }
 
         @media screen and (max-width: 750px) {
@@ -492,10 +540,6 @@
                 padding-left: 10px;
                 padding-right: 10px;
                 transition: 0.5s ease-in;
-            }
-            
-            .footer-box {
-                display: block;
             }
 
             .column {
@@ -508,53 +552,15 @@
                 border-radius: 30px;
                 transition: 0.5s ease-in;
             }
-        }
+            
+            .footer-box {
+                display: block;
+            }
 
-        .hideContent {
-            height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition-property: height;
-            transition: 0.5s;
-            transition-behavior: allow-discrete;
-        }
-
-        /* fallbak for not supported browsers */
-        .showContent {
-            height: auto; 
-            opacity: 1;
-            transition: 0.5s;
-            overflow: hidden;
-        }
-
-        /* for modern browsers */
-        @supports (height: calc-size(auto, size)) {
-            .showContent {
-                height: calc-size(auto, size);
+            .padding-results-left {
+                padding-left: 0;
             }
         }
-
-        .extrasContainer {
-            box-shadow: 0px 2px 4px var(--main-shadow-color);
-            border-radius: 20px;
-            border: 1px solid var(--content-border-color);
-            color: var(--heading-text-color);
-        }
-
-        .extrasHeader {
-            display: flex;
-            align-items: center;
-        }
-
-        /* Google symbols reference */
-        .material-symbols-outlined {
-            font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 24
-        }
-
     </style>
 </head>
 
@@ -588,7 +594,7 @@
         <!-- Results -->
         <div class="return-box box-padding">
             <h4>Result:</h4>
-            <div id="superDiv" style="padding-left: 20px;">
+            <div id="superDiv" class="padding-results-left">
             </div>
         </div>
         <br>
