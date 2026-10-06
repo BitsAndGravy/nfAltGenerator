@@ -314,6 +314,11 @@
         a {
             color: var(--checkbox-checked-color);
         }
+
+        .align-center {
+            align-items: center;
+        }
+
         body {
             background-image: linear-gradient(var(--main-background-gradient));
             background-repeat: no-repeat;
@@ -375,6 +380,10 @@
             transition: 0.5s ease-in;
         }
 
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
         .extrasContainer {
             box-shadow: 0px 2px 4px var(--main-shadow-color);
             border-radius: 20px;
@@ -382,9 +391,25 @@
             color: var(--heading-text-color);
         }
 
-        .extrasHeader {
+        .extrasHeading {
+            border-radius: 18px 18px 0 0;
+        }
+
+        .false-button {
+            transition: 0.2s;
+        }
+
+        .false-button:hover {
+            background-color: var(--checkbox-checked-color);
+            color: var(--body-background-gradient);
+        }
+
+        .false-button:active {
+            color: var(--checkbox-checked-color);
+        }
+
+        .flex {
             display: flex;
-            align-items: center;
         }
 
         .footer {
@@ -603,8 +628,8 @@
         <br>
 
         <!-- Extras -->
-        <div class="extrasContainer box-padding">
-            <div class="extrasHeader" onclick="showList()">
+        <div class="extrasContainer">
+            <div class="extrasHeading box-padding flex align-center cursor-pointer false-button"  onclick="showList()">
                 <span id="extrasDivAdd" class="material-symbols-outlined showContent">
                 add
                 </span>
@@ -616,56 +641,52 @@
                 <h3>Extras</h3>
             </div>
         
-                <div id="extrasDiv" class="hideContent">
-                    <br>
-                    <div id="footer" class="footer-box">
-                        <div id="requirements" class="column">
-                            <h4>Requirements and limitations</h4>
-                            <div class="footer-text">
-                                <p>All alternatives must be:</p>
-                                <ol>
-                                    <li>In the first paragraph.</li>
-                                    <li>Listed after a colon. </li>
-                                </ol>
+            <div id="extrasDiv" class="hideContent box-padding">
+                
+                <div id="footer" class="footer-box">
+                    <div id="requirements" class="column">
+                        <h4>Requirements and limitations</h4>
+                        <div class="footer-text">
+                            <p>All alternatives must be:</p>
+                            <ol>
+                                <li>In the first paragraph.</li>
+                                <li>Listed after a colon. </li>
+                            </ol>
 
-                                <p>Limitations:</p>
-                                <ol>
-                                    <li>Drugs may be at the end of text </li>
-                                    <li>Creates a single list; results are inaccurate if DL contains complex or multiple lists. Be familiar with the DL you are using. </li>
-                                </ol>
-                            </div>
-                            <br>
-                        </div>
-
-                        <div id="themeSelectDiv" class="column">
-                            <h4>Customize theme</h4>
-                            <select
-                                id="themeSelect"
-                                onchange="changeTheme(this.value)">
-                                    <option value="black-dark">Black (dark)</option>
-                                    <option value="blue-light">Blue (light)</option>
-                                    <option value="blue-dark">Blue (dark)</option>
-                                    <option value="green-dark">Green (dark)</option>
-                                    <option value="indigo-dark">Indigo (dark)</option>
-                                    <option value="orange-light">Orange (light)</option>
-                                    <option value="purple-dark">Purple (dark)</option>
-                                    <option value="red-dark">Red (dark)</option>
-                                    <option value="rose-gold-light">Rose gold (light)</option>
-                            </select>
-                            <br>
-                            <br>
-                        </div>
-
-                        <div class="column">
-                            <h4>Feedback</h4>
-                            <div class="footer-text">
-                                <p>Something not right? Questions? General feedback?<br>
-                                Let me know at notehelper.info@gmail.com</p>
-                            </div>
+                            <p>Limitations:</p>
+                            <ol>
+                                <li>Drugs may be at the end of text </li>
+                                <li>Creates a single list; results are inaccurate if DL contains complex or multiple lists. Be familiar with the DL you are using. </li>
+                            </ol>
                         </div>
                     </div>
-                </div>    
-            </div>
+
+                    <div id="themeSelectDiv" class="column">
+                        <h4>Customize theme</h4>
+                        <select
+                            id="themeSelect"
+                            onchange="changeTheme(this.value)">
+                                <option value="black-dark">Black (dark)</option>
+                                <option value="blue-light">Blue (light)</option>
+                                <option value="blue-dark">Blue (dark)</option>
+                                <option value="green-dark">Green (dark)</option>
+                                <option value="indigo-dark">Indigo (dark)</option>
+                                <option value="orange-light">Orange (light)</option>
+                                <option value="purple-dark">Purple (dark)</option>
+                                <option value="red-dark">Red (dark)</option>
+                                <option value="rose-gold-light">Rose gold (light)</option>
+                        </select>
+                    </div>
+
+                    <div class="column">
+                        <h4>Feedback</h4>
+                        <div class="footer-text">
+                            <p>Something not right? Questions? General feedback?<br>
+                            Let me know at notehelper.info@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>    
         </div>
     </div>
 
