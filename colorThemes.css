@@ -129,7 +129,7 @@
 
 [data-theme='green-dark'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #2f7c5b, #235c52, #123542;
+    --main-background-gradient: #387f60, #1d564c, #113542;
     --main-shadow-color: rgba(0, 0, 0, 0.753);
 
     /* Big blob that contains the other blobs */
@@ -157,7 +157,7 @@
     --button-background-gradient: #123542, #235c52;
     --button-text: #e5dfd4;
 
-    --checkbox-checked-color: #4190ff;
+    --checkbox-checked-color: #8fcbff;
 }
 
 [data-theme='indigo-dark'] {

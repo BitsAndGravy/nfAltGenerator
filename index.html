@@ -20,6 +20,7 @@
             setTheme();
         }
 
+
         function setTheme() {
             let chosenTheme = localStorage.getItem('altExtractorTheme');
             let defaultTheme = 'orange-light';
@@ -285,6 +286,7 @@
         function copyText() {
             let textToCopy = document.getElementById('textInput');
             navigator.clipboard.writeText(textToCopy.value);
+            showToast('Copied text to clipboard!');
         }
 
         // Show or hide extras
@@ -306,6 +308,13 @@
 
             removeSpan.classList.toggle('hideContent');
             removeSpan.classList.toggle('showContent');
+        }
+
+        function showToast(text) {
+            let toast = document.getElementById('toastNotification');
+            toast.innerText = text;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
         }
     </script>
 
@@ -451,6 +460,8 @@
         .hideContent { /* Also see showContent */
             height: 0;
             opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
             overflow: hidden;
             transition-property: height;
             transition: 0.5s;
@@ -520,6 +531,7 @@
             opacity: 1;
             transition: 0.5s;
             overflow: hidden;
+            padding: '';
         }
 
         /* for modern browsers */
@@ -561,6 +573,27 @@
             outline: solid 1px var(--textarea-border-color-focus);
             border: solid 1px var(--textarea-border-color-focus);
             background-color: var(--textarea-background-color-focus);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3748;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
         }
 
         @media screen and (max-width: 750px) {
@@ -689,6 +722,7 @@
             </div>    
         </div>
     </div>
+    <div class="toast" id="toastNotification">Copied to clipboard!</div>
 
     <br>
 </body>
