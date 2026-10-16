@@ -13,7 +13,7 @@
     /* Applies to textarea/input blob and results blob */
     --content-background-color: #ffffffe3;
     --content-text-color: black;
-    --content-border-color: transparent;
+    --content-border-color: black;
     --input-border-color: black;
 
     --textarea-background-color: #ffffffe3;
@@ -272,13 +272,13 @@
     --heading-text-color: #1d2a2c;
 
     /* Applies to textarea/input blob and results blob */
-    --content-background-color: #e0b9a2bc;
+    --content-background-color: transparent;
     --content-text-color: #1d2a2c;
     --content-border-color: #e0b9a2;
 
     --input-border-color: #364c50;
 
-    --textarea-background-color: #fbf5f3;
+    --textarea-background-color: transparent;
     --textarea-shadow-color: var(--main-shadow-color);
     --textarea-text-color: black;
     --placeholder-text-color: #00000080;

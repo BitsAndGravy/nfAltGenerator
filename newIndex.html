@@ -22,17 +22,16 @@
 <body>
     <div class="page-wrapper content-background">
         <!-- Heading -->
-        <div id="heading" class="flex flex-column heading-box box-padding align-center justify-center">
+        <div id="heading" class="flex flex-column heading-box pad-40 align-center justify-center">
             <H2>Alt Extractor</H2>
             <p>Returns a list of drug names from a denial language (DL) snippet. Link to <a href="https://docs.google.com/spreadsheets/d/1kdpV-JfrHLCFgcZo6ny40mA8KO2WLCoLQ7B2dgv_Er8/edit?gid=83427420#gid=83427420" target="_blank">Pharmacy Denial Language 4.0</a></p>
         </div>
 
 
+
+
         <!-- Snippet box and buttons -->
         <div id="inputAndRequirements" class="box-padding">
-            <div>
-            </div>
-
             <div>
                 <h4>Paste TextExpander snippet here, then click Extract:</h4>
             </div>
@@ -52,17 +51,56 @@
             </div>
         </div>
 
+        <!-- fieldset
+        <div id="inputAndRequirements" class="box-padding">
+            <fieldset>
+                <legend>Paste denial language here, then click extract</legend>
+                <div id="inputs" class="pad-20">
+                    <textarea
+                        id="textInput"
+                        class="snippetText"
+                        placeholder="start typing ..."
+                        rows='20';></textarea>
+
+                    <div id="buttons" class="buttons">
+                        <button type="button" onclick="getAlternatives()">Extract</button>
+                        <button type="button" onclick="copyText()">Copy</button>
+                        <button type="button" onclick="clearTextarea()">Clear</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        -->
+
+
+
         <!-- Results -->
+         <!--
         <div class="box-padding">
+        
             <div>
                 <h4>Result:</h4>
             </div>
-
             <div class="return-box pad-20">
                 <div id="superDiv"></div>
             </div>
+        -->
+
+        <div class="pad-40">
+            <fieldset>
+                <legend>Result</legend>
+
+                <div class="pad-10">
+                    <div id="superDiv"></div>
+                </div>
+            </fieldset>
         </div>
+
+        <!--</div>-->
         <br>
+
+
+
 
         <!-- Extras -->
         <div>
