@@ -32,11 +32,11 @@
 
 [data-theme='black-dark'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #2f2e2d, black;
+    --main-background-gradient: #2f2e2d, #232323;
     --main-shadow-color: black;
 
     /* Big blob that contains the other blobs */
-    --body-background-gradient: #2f2e2d, #232323;
+    --body-background-gradient: #232323, black;
     --body-border-color: #dc9d29d6;
 
     --heading-background-gradient: black;
