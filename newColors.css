@@ -213,8 +213,8 @@
 
 [data-theme='purple-dark'] {
     /* d399fa For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #22134c;
-    --main-shadow-color: #14180b;
+    --main-background-gradient: #2a1952;
+    --main-shadow-color: black;
 
     /* Big blob that contains the other blobs */
     --body-background-gradient: #4e4dad, #954ac9;
