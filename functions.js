@@ -268,7 +268,7 @@ document.getElementsByTagName("html")[0].setAttribute("data-theme", savedTheme);
 function copyText() {
     let textToCopy = document.getElementById('textInput');
     navigator.clipboard.writeText(textToCopy.value);
-    showToast('Copied text to clipboard!');
+    showToast('Copied denial language to clipboard!');
 }
 
 // Show or hide extras
