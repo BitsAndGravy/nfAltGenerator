@@ -98,7 +98,7 @@ button:active {
 }
 
 fieldset {
-    border: 2px solid var(--input-border-color);
+    border: 1px solid var(--input-border-color);
 }
 
 .flex {
