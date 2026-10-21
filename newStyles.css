@@ -90,7 +90,7 @@ button:active {
 
 .false-button:hover {
     background-color: var(--checkbox-checked-color);
-    color: var(--body-background-gradient);
+    color: var(--accent-contrast);
 }
 
 .false-button:active {

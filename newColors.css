@@ -45,6 +45,9 @@
         /* Accent color 2 */
         --accent-color-2: var(--checkbox-checked-color);
 
+        /* Accent contrast */
+        --accent-contrast: white;
+
         /* Buttons and textarea */
         --input-border-color: black;
 }
@@ -54,7 +57,7 @@
     --main-shadow-color: black;
 
     /* Container for all ocntents (header, textarea, result, extras) */
-    --body-background-gradient: #232323, black;
+    --body-background-gradient: #232323, #0E0E0E;
     --body-border-color: #dc9d29d6;
 
     --heading-background-gradient: black;
@@ -79,6 +82,7 @@
     --button-text: #cbc7c0;
 
     --checkbox-checked-color: #dc9e29;
+    --accent-contrast: black;
 }
 
 [data-theme='blue-light'] {
@@ -110,6 +114,7 @@
 
     --checkbox-checked-color: #e65c00;
     --accent-color-2: #ffc83c;
+    --accent-contrast: white;
 }
 
 [data-theme='blue-dark'] {
@@ -143,6 +148,7 @@
     --button-text: #d0fefd;
 
     --checkbox-checked-color: var(--textarea-border-color-focus);
+    --accent-contrast: black;
 }
 
 [data-theme='green-dark'] {
@@ -154,7 +160,7 @@
     --body-background-gradient: #132641;
     --body-border-color: transparent;
 
-    --heading-background-gradient: #2f7c5b;
+    --heading-background-gradient: #2c8860;
     --heading-text-color: #e7f0cc;
 
     /* Applies to textarea/input blob and results blob */
@@ -176,6 +182,7 @@
     --button-text: #e5dfd4;
 
     --checkbox-checked-color: #8fcbff;
+    --accent-contrast: #132641;
 }
 
 [data-theme='indigo-dark'] {
@@ -209,6 +216,7 @@
     --button-text: #212048;
 
     --checkbox-checked-color: #cd94da;
+    --accent-contrast: #11112c;
 }
 
 [data-theme='purple-dark'] {
@@ -242,6 +250,7 @@
     --button-text: black;
 
     --checkbox-checked-color: #e29dee;
+    --accent-contrast: #2a1952;
 }
 
 [data-theme='red-dark'] {
@@ -275,6 +284,7 @@
     --button-text: #cccccc;
 
     --checkbox-checked-color: #e7bc2c;
+    --accent-contrast: black;
 }
 
 [data-theme='rose-gold-light'] {
@@ -308,4 +318,5 @@
     --button-text: black;
 
     --checkbox-checked-color: #0091d4;
+    --accent-contrast: white;
 }
