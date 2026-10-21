@@ -120,7 +120,7 @@
 [data-theme='blue-dark'] {
     /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
     --main-background-gradient: #256ab9, #112d53;
-    --main-shadow-color: #00000095;
+    --main-shadow-color: black;
 
     /* Big blob that contains the other blobs  */
     --body-background-gradient: #08090D;
@@ -136,7 +136,7 @@
 
     --input-border-color: #a6fcfb89;
 
-    --textarea-background-color: #353b51;
+    --textarea-background-color: #292e3f;
     --textarea-shadow-color: var(--main-shadow-color);
     --textarea-text-color: #e7fefe;
     --placeholder-text-color: #d0fefdab;
@@ -147,7 +147,7 @@
     --button-background-gradient: #2457bd, #1c397a;
     --button-text: #d0fefd;
 
-    --checkbox-checked-color: var(--textarea-border-color-focus);
+    --checkbox-checked-color: #dafc00;
     --accent-contrast: black;
 }
 
