@@ -230,12 +230,12 @@
 
     --input-border-color: #e29dee;
 
-    --textarea-background-color: #22134c92;
+    --textarea-background-color: #190f35d4;
     --textarea-shadow-color: #14180b;
     --textarea-text-color: azure;
     --placeholder-text-color: #f9d9ffa9;
 
-    --textarea-background-color-focus: #22134c92;
+    --textarea-background-color-focus: black;
     --textarea-border-color-focus: #e29dee;
 
     --button-background-gradient: #954ac9c6, #d399fac6;
