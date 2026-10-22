@@ -152,8 +152,7 @@
 }
 
 [data-theme='green-dark'] {
-    /* For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #387f60, #1d564c, #113542;
+    --main-background-gradient:  #113542, #387f60;
     --main-shadow-color: rgba(0, 0, 0, 0.753);
 
     /* Big blob that contains the other blobs */
