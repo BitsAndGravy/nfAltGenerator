@@ -53,11 +53,11 @@
 }
 
 [data-theme='black-dark'] {
-    --main-background-gradient: #2f2e2d, #232323;
+    --main-background-gradient: #404040;
     --main-shadow-color: black;
 
     /* Container for all ocntents (header, textarea, result, extras) */
-    --body-background-gradient: #232323, #0E0E0E;
+    --body-background-gradient: #202020;
     --body-border-color: #dc9d29d6;
 
     --heading-background-gradient: black;
