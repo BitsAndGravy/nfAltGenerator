@@ -319,3 +319,36 @@
     --checkbox-checked-color: #0091d4;
     --accent-contrast: white;
 }
+
+/* Seasonal themes */
+[data-theme='halloween'] {
+    --main-background-gradient: #000201, #202020;
+    --main-shadow-color: black;
+
+    /* Heading */
+    --heading-background-gradient: #6FD18B;
+    --heading-text-color: #000201;
+
+    /* Body/content */
+    --body-background-gradient: #202020;
+    --content-text-color: #D0CCC3;
+    --content-border-color: #5d5d5d;
+
+    /* inputs */
+    --input-border-color: #5d5d5d;
+
+    --textarea-background-color: #131313;
+    --textarea-shadow-color: #14180b;
+    --textarea-text-color: #cbc7c0;
+    --placeholder-text-color: #cbc7c0A6;
+
+    --textarea-background-color-focus: black;
+    --textarea-border-color-focus: #ff9a48;
+
+    --button-background-gradient: #97FFC1, #74D08F;
+    --button-text: black;
+
+    --checkbox-checked-color: #ff9a48;
+        --accent-color-2: white;
+    --accent-contrast: black;
+}
