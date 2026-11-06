@@ -322,7 +322,7 @@
 
 /* Seasonal themes */
 [data-theme='halloween'] {
-    --main-background-gradient: #000201, #202020;
+    --main-background-gradient: #363C4C, #2b2b2b;
     --main-shadow-color: black;
 
     /* Heading */
@@ -349,6 +349,70 @@
     --button-text: black;
 
     --checkbox-checked-color: #ff9a48;
-        --accent-color-2: white;
+    --accent-color-2: white;
     --accent-contrast: black;
+}
+
+[data-theme='winter-holiday-dark'] {
+    --main-background-gradient: #1E533F, #111E18;
+    --main-shadow-color: black;
+
+    /* Heading */
+    --heading-background-gradient: #970114;
+    --heading-text-color: #f1d5bc;
+
+    /* Body/content */
+    --body-background-gradient: #141e19;
+    --content-text-color: #D0CCC3;
+    --content-border-color: #5d5d5d;
+
+    /* inputs */
+    --input-border-color: #5d5d5d;
+
+    --textarea-background-color: #131313;
+    --textarea-shadow-color: #14180b;
+    --textarea-text-color: #cbc7c0;
+    --placeholder-text-color: #cbc7c0A6;
+
+    --textarea-background-color-focus: black;
+    --textarea-border-color-focus: #ffa94e;
+
+    --button-background-gradient: #e0984a, #7a552e;
+    --button-text: white;
+
+    --checkbox-checked-color: #ffa94e;
+    --accent-color-2: white;
+    --accent-contrast: black;
+}
+
+[data-theme='winter-holiday-light'] {
+    --main-background-gradient: white, #cdd5d3;
+    --main-shadow-color: #00000071;
+
+    /* Heading */
+    --heading-background-gradient: #C60035;
+    --heading-text-color: #f7efe9;
+
+    /* Body/content */
+    --body-background-gradient: #eff1f0e1;
+    --content-text-color: #0f0d0b;
+    --content-border-color: #5d5d5d;
+
+    /* inputs */
+    --input-border-color: #970115ac;
+
+    --textarea-background-color: #ffffffad;
+    --textarea-shadow-color: #14180b7e;
+    --textarea-text-color: #cbc7c0;
+    --placeholder-text-color: #cbc7c0A6;
+
+    --textarea-background-color-focus: white;
+    --textarea-border-color-focus: #970114;
+
+    --button-background-gradient: #f7c795, #eaa861;
+    --button-text: black;
+
+    --checkbox-checked-color: #C60035;
+    --accent-color-2: white;
+    --accent-contrast: white;
 }
