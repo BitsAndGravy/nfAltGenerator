@@ -219,36 +219,32 @@
 }
 
 [data-theme='purple-dark'] {
-    /* d399fa For items with 'gradient', use one color for solid, multiple colors for gradient top-down */
-    --main-background-gradient: #2a1952;
+    --main-background-gradient: #4e4dad, #954ac9, #A964D9;;
     --main-shadow-color: black;
 
-    /* Big blob that contains the other blobs */
-    --body-background-gradient: #4e4dad, #954ac9;
-    --body-border-color: #d399fa;
-
-    --heading-background-gradient: #22134c;
+    --heading-background-gradient: #4D259D;
     --heading-text-color: azure;
 
-    /* Applies to textarea/input blob and results blob */
+    --body-background-gradient: #22134c;
+
     --content-background-color: #262a77;
-    --content-text-color: azure;
+    --content-text-color: #fcefff;
     --content-border-color: transparent;
 
     --input-border-color: #e29dee;
 
-    --textarea-background-color: #190f35d4;
+    --textarea-background-color: #191033;
     --textarea-shadow-color: #14180b;
-    --textarea-text-color: azure;
-    --placeholder-text-color: #f9d9ffa9;
+    --textarea-text-color: #fdf6fe;
+    --placeholder-text-color: #fdf6feb1;
 
-    --textarea-background-color-focus: black;
-    --textarea-border-color-focus: #e29dee;
+    --textarea-background-color-focus: #0b0814;
+    --textarea-border-color-focus: #f1ff74b7;
 
-    --button-background-gradient: #954ac9c6, #d399fac6;
-    --button-text: black;
+    --button-background-gradient: #9190d7,  #4e4dad 30%;
+    --button-text: white;
 
-    --checkbox-checked-color: #e29dee;
+    --checkbox-checked-color: #e5ff00;
     --accent-contrast: #2a1952;
 }
 
@@ -402,7 +398,7 @@
     --input-border-color: #970115ac;
 
     --textarea-background-color: #ffffffad;
-    --textarea-shadow-color: #14180b7e;
+    --textarea-shadow-color: #14180b39;
     --textarea-text-color: #cbc7c0;
     --placeholder-text-color: #cbc7c0A6;
 
